@@ -1,0 +1,137 @@
+<!-- soddisfazione -->
+<div class="section">
+    <div class="section-title">Soddisfazione Professionale</div>
+    
+    <!-- soddisfazione globale -->
+    <div class="form-group">
+        <label class="required">Quanto è soddisfatto/a della sua attuale situazione professionale?</label>
+        <div class="rating-scale">
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneGlobale1" name="soddisfazioneGlobale" value="1" required>
+                <label for="soddisfazioneGlobale1">1</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneGlobale2" name="soddisfazioneGlobale" value="2">
+                <label for="soddisfazioneGlobale2">2</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneGlobale3" name="soddisfazioneGlobale" value="3">
+                <label for="soddisfazioneGlobale3">3</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneGlobale4" name="soddisfazioneGlobale" value="4">
+                <label for="soddisfazioneGlobale4">4</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneGlobale5" name="soddisfazioneGlobale" value="5">
+                <label for="soddisfazioneGlobale5">5</label>
+            </div>
+        </div>
+        <div class="rating-labels">
+            <span>Per niente soddisfatto/a</span>
+            <span>Molto soddisfatto/a</span>
+        </div>
+        <div class="error-message" id="soddisfazioneGlobale-error">Seleziona un livello di soddisfazione</div>
+    </div>
+    
+    <!-- ragione non soddisfatto -->
+    <div class="form-group">
+        <label for="ragioneNonSoddisfatto">Se non è soddisfatto/a, qual è la ragione principale?</label>
+        <textarea id="ragioneNonSoddisfatto" name="ragioneNonSoddisfatto" rows="3" maxlength="500"></textarea>
+    </div>
+    
+    <!-- soddisfazione economica -->
+    <div class="form-group">
+        <label class="required">Quanto è soddisfatto/a del suo guadagno economico?</label>
+        <div class="rating-scale">
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneEconomica1" name="soddisfazioneEconomica" value="1" required>
+                <label for="soddisfazioneEconomica1">1</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneEconomica2" name="soddisfazioneEconomica" value="2">
+                <label for="soddisfazioneEconomica2">2</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneEconomica3" name="soddisfazioneEconomica" value="3">
+                <label for="soddisfazioneEconomica3">3</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneEconomica4" name="soddisfazioneEconomica" value="4">
+                <label for="soddisfazioneEconomica4">4</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneEconomica5" name="soddisfazioneEconomica" value="5">
+                <label for="soddisfazioneEconomica5">5</label>
+            </div>
+        </div>
+        <div class="rating-labels">
+            <span>Per niente soddisfatto/a</span>
+            <span>Molto soddisfatto/a</span>
+        </div>
+        <div class="error-message" id="soddisfazioneEconomica-error">Seleziona un livello di soddisfazione</div>
+    </div>
+    
+    <!-- soddisfazione gratificazione -->
+    <div class="form-group">
+        <label class="required">Quanto è soddisfatto/a della gratificazione professionale?</label>
+        <div class="rating-scale">
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneGratificazione1" name="soddisfazioneGratificazione" value="1" required>
+                <label for="soddisfazioneGratificazione1">1</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneGratificazione2" name="soddisfazioneGratificazione" value="2">
+                <label for="soddisfazioneGratificazione2">2</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneGratificazione3" name="soddisfazioneGratificazione" value="3">
+                <label for="soddisfazioneGratificazione3">3</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneGratificazione4" name="soddisfazioneGratificazione" value="4">
+                <label for="soddisfazioneGratificazione4">4</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneGratificazione5" name="soddisfazioneGratificazione" value="5">
+                <label for="soddisfazioneGratificazione5">5</label>
+            </div>
+        </div>
+        <div class="rating-labels">
+            <span>Per niente soddisfatto/a</span>
+            <span>Molto soddisfatto/a</span>
+        </div>
+        <div class="error-message" id="soddisfazioneGratificazione-error">Seleziona un livello di soddisfazione</div>
+    </div>
+    
+    <!-- fonti invio -->
+    <div class="form-group">
+        <label class="required">Quali sono le principali fonti di invio dei pazienti?</label>
+        <div class="checkbox-group">
+            <label class="checkbox-option">
+                <input type="checkbox" name="fontiInvio" value="Passaparola" class="at-least-one-required"> <span>Passaparola</span>
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="fontiInvio" value="Colleghi" class="at-least-one-required"> <span>Colleghi</span>
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="fontiInvio" value="Medici di base" class="at-least-one-required"> <span>Medici di base</span>
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="fontiInvio" value="Internet" class="at-least-one-required"> <span>Internet</span>
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="fontiInvio" value="Social media" class="at-least-one-required"> <span>Social media</span>
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="fontiInvio" value="Altro" class="at-least-one-required" onclick="toggleConditionalField('fontiInvio', 'Altro', 'altroFontiInvio', true);"> <span>Altro</span>
+            </label>
+            
+            <!-- altro -->
+            <div class="conditional-field" id="altroFontiInvio" style="display:none;">
+                <input type="text" id="specificaAltroFontiInvio" name="specificaAltroFontiInvio" placeholder="Specificare" maxlength="155">
+            </div>
+        </div>
+        <div class="error-message" id="fontiInvio-error">Seleziona almeno un'opzione</div>
+    </div>
+</div>

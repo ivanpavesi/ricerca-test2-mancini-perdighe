@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Questionario APC-SPC - Ricerca Mancini-Perdighe</title>
+    <link rel="stylesheet" href="styles.css">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="container">
+        <!-- Banner principale -->
+        <div class="banner">
+            <div class="title-main">APC-SPC</div>
+            <div class="title-secondary">Scuole di Psicoterapia Cognitiva</div>
+            <div class="title-address">Viale Castro Pretorio, 116 - Roma</div>
+            <div class="title-schools">Sede di: Ancona, Grosseto, Lecce, Milano, Padova, Reggio Calabria, Roma, Verona</div>
+            <a href="https://www.apc.it" class="title-link" target="_blank">www.apc.it</a>
+        </div>
+        
+        <!-- Titolo questionario -->
+        <div class="questionnaire-title">
+            <h2>QUESTIONARIO SULLA SODDISFAZIONE PROFESSIONALE DEGLI EX-ALLIEVI APC-SPC</h2>
+        </div>
+        
+        <!-- Introduzione -->
+        <div class="introduction-text">
+            <p>Gentile ex-allievo/a,</p>
+            <p>ti chiediamo di compilare questo questionario che ha lo scopo di valutare la soddisfazione professionale degli ex-allievi delle nostre scuole e l'efficacia della formazione ricevuta.</p>
+            <p>Il questionario è anonimo e i dati raccolti saranno utilizzati esclusivamente a fini di ricerca.</p>
+            <p>Ti ringraziamo per la collaborazione.</p>
+            <div class="signature">Francesco Mancini e Claudio Perdighe</div>
+        </div>
+        
+        <!-- Form -->
+        <form id="questionnaireForm" novalidate>
+            <!-- Sezioni del questionario -->
+            <div id="section1"></div>
+            <div id="section2"></div>
+            <div id="section3"></div>
+            <div id="section4"></div>
+            <div id="section5"></div>
+            
+            <!-- Pulsante invio -->
+            <div class="submit-group">
+                <button type="submit" id="submitBtn">Invia Questionario</button>
+            </div>
+        </form>
+        
+        <!-- Messaggio di ringraziamento -->
+        <div class="thank-you-message" id="thankYouMessage">
+            <h3>Grazie per aver completato il questionario!</h3>
+            <p>Le tue risposte sono state registrate con successo.</p>
+        </div>
+    </div>
+    
+    <!-- Script -->
+    <script src="script.js"></script>
+    <script src="direct-sumbit.js"></script>
+    <script>
+        // Carica le sezioni del form
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSection('section1.html', 'section1');
+            loadSection('section2.html', 'section2');
+            loadSection('section3.html', 'section3');
+            loadSection('section4.html', 'section4');
+            loadSection('section5.html', 'section5');
+        });
+        
+        // Funzione per caricare le sezioni
+        function loadSection(url, targetId) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById(targetId).innerHTML = xhr.responseText;
+                    // Reinizializza i campi condizionali dopo il caricamento
+                    if (typeof initForm === 'function') {
+                        initForm();
+                    }
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</body>
+</html>

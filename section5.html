@@ -1,0 +1,244 @@
+<!-- partecipazione cultura professionale -->
+<div class="section">
+    <div class="section-title">Partecipazione alla Cultura Professionale</div>
+    
+    <!-- iscrizione SITCC -->
+    <div class="form-group">
+        <label class="required">E' iscritto alla SITCC?</label>
+        <div class="radio-group inline-radio">
+            <label class="radio-option">
+                <input type="radio" name="iscrittoSITCC" value="Si" required onclick="toggleConditionalField('iscrittoSITCC', 'Si', 'siSITCC'); toggleConditionalField('iscrittoSITCC', 'No', 'noSITCC');"> <span>Si</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="iscrittoSITCC" value="No" onclick="toggleConditionalField('iscrittoSITCC', 'Si', 'siSITCC'); toggleConditionalField('iscrittoSITCC', 'No', 'noSITCC');"> <span>No</span>
+            </label>
+        </div>
+        <div class="error-message" id="iscrittoSITCC-error">Seleziona un'opzione</div>
+        
+        <!-- condizionali SITCC=si -->
+        <div class="conditional-field" id="siSITCC" style="display:none;">
+            <div class="form-group">
+                <label class="required">Perché è iscritto alla SITCC?</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoSiSITCC" value="Mi piace fare parte di una comunità scientifica" class="at-least-one-required"> 
+                        <span>Mi piace fare parte di una comunità scientifica</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoSiSITCC" value="È un'occasione di arricchimento professionale" class="at-least-one-required"> 
+                        <span>È un'occasione di arricchimento professionale</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoSiSITCC" value="È un modo per stare in contatto con i colleghi" class="at-least-one-required"> 
+                        <span>È un modo per stare in contatto con i colleghi</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoSiSITCC" value="Mi dà modo di partecipare ai congressi" class="at-least-one-required"> 
+                        <span>Mi dà modo di partecipare ai congressi</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoSiSITCC" value="Apprezzo i vantaggi affiliativi (rivista, sconti sui corsi, ecc.)" class="at-least-one-required"> 
+                        <span>Apprezzo i vantaggi affiliativi (rivista, sconti sui corsi, ecc.)</span>
+                    </label>
+                </div>
+                <div class="error-message" id="motivoSiSITCC-error">Seleziona almeno un'opzione</div>
+            </div>
+        </div>
+        
+        <!-- condizionali SITCC=no -->
+        <div class="conditional-field" id="noSITCC" style="display:none;">
+            <div class="form-group">
+                <label for="motivoNoSITCC">Perché no?</label>
+                <textarea id="motivoNoSITCC" name="motivoNoSITCC" rows="3" maxlength="500"></textarea>
+                <div class="error-message" id="motivoNoSITCC-error">Inserisci il motivo</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- formazione -->
+<div class="section">
+    <div class="section-title">Formazione</div>
+    
+    <!-- contributo scuola -->
+    <div class="form-group">
+        <label class="required">Quanto ritiene che la scuola abbia contribuito al raggiungimento dei suoi traguardi professionali?</label>
+        <div class="rating-scale">
+            <div class="rating-option">
+                <input type="radio" id="contributoScuola1" name="contributoScuola" value="1" required>
+                <label for="contributoScuola1">1</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="contributoScuola2" name="contributoScuola" value="2">
+                <label for="contributoScuola2">2</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="contributoScuola3" name="contributoScuola" value="3">
+                <label for="contributoScuola3">3</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="contributoScuola4" name="contributoScuola" value="4">
+                <label for="contributoScuola4">4</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="contributoScuola5" name="contributoScuola" value="5">
+                <label for="contributoScuola5">5</label>
+            </div>
+        </div>
+        <div class="rating-labels">
+            <span>Poco</span>
+            <span>Molto</span>
+        </div>
+        <div class="error-message" id="contributoScuola-error">Seleziona un livello di contributo</div>
+    </div>
+    
+    <!-- ragione contributo -->
+    <div class="form-group">
+        <label class="required">In che modo la scuola ha contribuito maggiormente?</label>
+        <div class="checkbox-group">
+            <label class="checkbox-option">
+                <input type="checkbox" name="ragioneContributo" value="Competenze cliniche" class="at-least-one-required"> <span>Competenze cliniche</span>
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="ragioneContributo" value="Competenze relazionali" class="at-least-one-required"> <span>Competenze relazionali</span>
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="ragioneContributo" value="Competenze diagnostiche" class="at-least-one-required"> <span>Competenze diagnostiche</span>
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="ragioneContributo" value="Competenze di ricerca" class="at-least-one-required"> <span>Competenze di ricerca</span>
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="ragioneContributo" value="Altro" class="at-least-one-required" onclick="toggleConditionalField('ragioneContributo', 'Altro', 'altroRagioneContributo', true);"> <span>Altro</span>
+            </label>
+            
+            <!-- altro -->
+            <div class="conditional-field" id="altroRagioneContributo" style="display:none;">
+                <input type="text" id="specificaAltroRagioneContributo" name="specificaAltroRagioneContributo" placeholder="Specificare" maxlength="155">
+            </div>
+        </div>
+        <div class="error-message" id="ragioneContributo-error">Seleziona almeno un'opzione</div>
+    </div>
+    
+    <!-- soddisfazione competenze -->
+    <div class="form-group">
+        <label class="required">Quanto è soddisfatto/a delle competenze acquisite durante la formazione?</label>
+        <div class="rating-scale">
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneCompetenze1" name="soddisfazioneCompetenze" value="1" required>
+                <label for="soddisfazioneCompetenze1">1</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneCompetenze2" name="soddisfazioneCompetenze" value="2">
+                <label for="soddisfazioneCompetenze2">2</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneCompetenze3" name="soddisfazioneCompetenze" value="3">
+                <label for="soddisfazioneCompetenze3">3</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneCompetenze4" name="soddisfazioneCompetenze" value="4">
+                <label for="soddisfazioneCompetenze4">4</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneCompetenze5" name="soddisfazioneCompetenze" value="5">
+                <label for="soddisfazioneCompetenze5">5</label>
+            </div>
+        </div>
+        <div class="rating-labels">
+            <span>Per niente soddisfatto/a</span>
+            <span>Molto soddisfatto/a</span>
+        </div>
+        <div class="error-message" id="soddisfazioneCompetenze-error">Seleziona un livello di soddisfazione</div>
+    </div>
+    
+    <!-- spendibilità competenze -->
+    <div class="form-group">
+        <label class="required">Quanto ritiene spendibili le competenze acquisite durante la formazione?</label>
+        <div class="rating-scale">
+            <div class="rating-option">
+                <input type="radio" id="spendibilitaCompetenze1" name="spendibilitaCompetenze" value="1" required>
+                <label for="spendibilitaCompetenze1">1</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="spendibilitaCompetenze2" name="spendibilitaCompetenze" value="2">
+                <label for="spendibilitaCompetenze2">2</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="spendibilitaCompetenze3" name="spendibilitaCompetenze" value="3">
+                <label for="spendibilitaCompetenze3">3</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="spendibilitaCompetenze4" name="spendibilitaCompetenze" value="4">
+                <label for="spendibilitaCompetenze4">4</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="spendibilitaCompetenze5" name="spendibilitaCompetenze" value="5">
+                <label for="spendibilitaCompetenze5">5</label>
+            </div>
+        </div>
+        <div class="rating-labels">
+            <span>Poco spendibili</span>
+            <span>Molto spendibili</span>
+        </div>
+        <div class="error-message" id="spendibilitaCompetenze-error">Seleziona un livello di spendibilità</div>
+    </div>
+    
+    <!-- efficacia competenza -->
+    <div class="form-group">
+        <label class="required">Quanto ritiene efficaci le competenze acquisite durante la formazione?</label>
+        <div class="rating-scale">
+            <div class="rating-option">
+                <input type="radio" id="efficaciaCompetenza1" name="efficaciaCompetenza" value="1" required>
+                <label for="efficaciaCompetenza1">1</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="efficaciaCompetenza2" name="efficaciaCompetenza" value="2">
+                <label for="efficaciaCompetenza2">2</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="efficaciaCompetenza3" name="efficaciaCompetenza" value="3">
+                <label for="efficaciaCompetenza3">3</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="efficaciaCompetenza4" name="efficaciaCompetenza" value="4">
+                <label for="efficaciaCompetenza4">4</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="efficaciaCompetenza5" name="efficaciaCompetenza" value="5">
+                <label for="efficaciaCompetenza5">5</label>
+            </div>
+        </div>
+        <div class="rating-labels">
+            <span>Poco efficaci</span>
+            <span>Molto efficaci</span>
+        </div>
+        <div class="error-message" id="efficaciaCompetenza-error">Seleziona un livello di efficacia</div>
+    </div>
+    
+    <!-- pazienti formazione -->
+    <div class="form-group">
+        <label for="pazientiFormazione" class="required">Quanti pazienti ha seguito durante la formazione?</label>
+        <input type="number" id="pazientiFormazione" name="pazientiFormazione" min="0" max="100" required pattern="\d*" inputmode="numeric">
+        <div class="error-message" id="pazientiFormazione-error">Inserisci il numero di pazienti</div>
+    </div>
+    
+    <!-- ore formazione -->
+    <div class="form-group">
+        <label for="oreFormazione" class="required">Quante ore di supervisione ha ricevuto durante la formazione?</label>
+        <input type="number" id="oreFormazione" name="oreFormazione" min="0" max="1000" required pattern="\d*" inputmode="numeric">
+        <div class="error-message" id="oreFormazione-error">Inserisci il numero di ore</div>
+    </div>
+    
+    <!-- aspetti cambiare -->
+    <div class="form-group">
+        <label for="aspettiCambiare">Quali aspetti della formazione cambierebbe?</label>
+        <textarea id="aspettiCambiare" name="aspettiCambiare" rows="3" maxlength="500"></textarea>
+    </div>
+    
+    <!-- punti forza -->
+    <div class="form-group">
+        <label for="puntiForza">Quali sono i punti di forza della formazione ricevuta?</label>
+        <textarea id="puntiForza" name="puntiForza" rows="3" maxlength="500"></textarea>
+    </div>
+</div>
