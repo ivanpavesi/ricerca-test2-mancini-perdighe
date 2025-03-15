@@ -1,0 +1,201 @@
+<!-- soddisfazione formazione -->
+<div class="section">
+    <div class="section-title">Soddisfazione per la formazione</div>
+    
+    <!-- contributo scuola -->
+    <div class="form-group">
+        <label class="required">Quanto il fatto di aver frequentato una scuola di psicoterapia ha contribuito alla sua attuale situazione professionale?</label>
+        <div class="rating-scale">
+            <div class="rating-option">
+                <input type="radio" id="contributoScuola1" name="contributoScuola" value="1" required>
+                <label for="contributoScuola1">1</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="contributoScuola2" name="contributoScuola" value="2">
+                <label for="contributoScuola2">2</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="contributoScuola3" name="contributoScuola" value="3">
+                <label for="contributoScuola3">3</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="contributoScuola4" name="contributoScuola" value="4">
+                <label for="contributoScuola4">4</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="contributoScuola5" name="contributoScuola" value="5">
+                <label for="contributoScuola5">5</label>
+            </div>
+        </div>
+        <div class="rating-labels">
+            <span class="rating-label-left">per niente</span>
+            <span class="rating-label-right">moltissimo</span>
+        </div>
+        <div class="error-message" id="contributoScuola-error">Seleziona un livello</div>
+    </div>
+    
+    <!-- ragione -->
+    <div class="form-group">
+        <label class="required">Spieghi la ragione:</label>
+        <div class="checkbox-group">
+            <label class="checkbox-option">
+                <input type="checkbox" name="ragioneContributo" value="Continuo a fare il lavoro che facevo prima" class="at-least-one-required"> 
+                Continuo a fare il lavoro che facevo prima
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="ragioneContributo" value="Continuo a fare il lavoro che facevo prima come psicologo" class="at-least-one-required"> 
+                Continuo a fare il lavoro che facevo prima come psicologo
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="ragioneContributo" value="Svolgo lo stesso lavoro, ma con maggiore competenza" class="at-least-one-required"> 
+                Svolgo lo stesso lavoro, ma con maggiore competenza
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="ragioneContributo" value="Svolgo lo stesso lavoro, ma sono occupato più ore" class="at-least-one-required"> 
+                Svolgo lo stesso lavoro, ma sono occupato più ore
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="ragioneContributo" value="Ho un lavoro proprio grazie alla formazione in psicoterapia" class="at-least-one-required"> 
+                Ho un lavoro proprio grazie alla formazione in psicoterapia
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="ragioneContributo" value="Svolgo sia il lavoro di prima, sia il lavoro di psicoterapeuta" class="at-least-one-required"> 
+                Svolgo sia il lavoro di prima, sia il lavoro di psicoterapeuta
+            </label>
+            <label class="checkbox-option">
+                <input type="checkbox" name="ragioneContributo" value="Altro" class="at-least-one-required" onchange="toggleConditionalField('ragioneContributo', 'Altro', 'altroRagioneContributo', true)"> 
+                Altro
+            </label>
+            
+            <!-- altro -->
+            <div class="conditional-field" id="altroRagioneContributo">
+                <input type="text" id="specificaAltroRagioneContributo" name="specificaAltroRagioneContributo" placeholder="Specificare">
+            </div>
+        </div>
+        <div class="error-message" id="ragioneContributo-error">Seleziona almeno un'opzione</div>
+    </div>
+    
+    <!-- soddisfazione competenze -->
+    <div class="form-group">
+        <label class="required">Quanto è soddisfatto delle competenze acquisite con la formazione in psicoterapia?</label>
+        <div class="rating-scale">
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneCompetenze1" name="soddisfazioneCompetenze" value="1" required>
+                <label for="soddisfazioneCompetenze1">1</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneCompetenze2" name="soddisfazioneCompetenze" value="2">
+                <label for="soddisfazioneCompetenze2">2</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneCompetenze3" name="soddisfazioneCompetenze" value="3">
+                <label for="soddisfazioneCompetenze3">3</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneCompetenze4" name="soddisfazioneCompetenze" value="4">
+                <label for="soddisfazioneCompetenze4">4</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="soddisfazioneCompetenze5" name="soddisfazioneCompetenze" value="5">
+                <label for="soddisfazioneCompetenze5">5</label>
+            </div>
+        </div>
+        <div class="rating-labels">
+            <span class="rating-label-left">per niente</span>
+            <span class="rating-label-right">del tutto</span>
+        </div>
+        <div class="error-message" id="soddisfazioneCompetenze-error">Seleziona un livello di soddisfazione</div>
+    </div>
+    
+    <!-- spendibilità -->
+    <div class="form-group">
+        <label class="required">Quanto le competenze acquisite sono spendibili nel settore in cui lavora?</label>
+        <div class="rating-scale">
+            <div class="rating-option">
+                <input type="radio" id="spendibilitaCompetenze1" name="spendibilitaCompetenze" value="1" required>
+                <label for="spendibilitaCompetenze1">1</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="spendibilitaCompetenze2" name="spendibilitaCompetenze" value="2">
+                <label for="spendibilitaCompetenze2">2</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="spendibilitaCompetenze3" name="spendibilitaCompetenze" value="3">
+                <label for="spendibilitaCompetenze3">3</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="spendibilitaCompetenze4" name="spendibilitaCompetenze" value="4">
+                <label for="spendibilitaCompetenze4">4</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="spendibilitaCompetenze5" name="spendibilitaCompetenze" value="5">
+                <label for="spendibilitaCompetenze5">5</label>
+            </div>
+        </div>
+        <div class="rating-labels">
+            <span class="rating-label-left">per niente</span>
+            <span class="rating-label-right">del tutto</span>
+        </div>
+        <div class="error-message" id="spendibilitaCompetenze-error">Seleziona un livello</div>
+    </div>
+    
+    <!-- efficacia -->
+    <div class="form-group">
+        <label class="required">Quanto si sente efficace e competente nel suo lavoro di psicoterapeuta?</label>
+        <div class="rating-scale">
+            <div class="rating-option">
+                <input type="radio" id="efficaciaCompetenza1" name="efficaciaCompetenza" value="1" required>
+                <label for="efficaciaCompetenza1">1</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="efficaciaCompetenza2" name="efficaciaCompetenza" value="2">
+                <label for="efficaciaCompetenza2">2</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="efficaciaCompetenza3" name="efficaciaCompetenza" value="3">
+                <label for="efficaciaCompetenza3">3</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="efficaciaCompetenza4" name="efficaciaCompetenza" value="4">
+                <label for="efficaciaCompetenza4">4</label>
+            </div>
+            <div class="rating-option">
+                <input type="radio" id="efficaciaCompetenza5" name="efficaciaCompetenza" value="5">
+                <label for="efficaciaCompetenza5">5</label>
+            </div>
+        </div>
+        <div class="rating-labels">
+            <span class="rating-label-left">per niente</span>
+            <span class="rating-label-right">del tutto</span>
+        </div>
+        <div class="error-message" id="efficaciaCompetenza-error">Seleziona un livello</div>
+    </div>
+    
+    <!-- pazienti -->
+    <div class="form-group">
+        <label for="pazientiFormazione" class="required">Durante gli anni di formazione in psicoterapia, quanti pazienti circa ha seguito, escludendo il tirocinio:</label>
+        <input type="number" id="pazientiFormazione" name="pazientiFormazione" min="0" required>
+        <div class="error-message" id="pazientiFormazione-error">Inserisci il numero di pazienti</div>
+    </div>
+    
+    <!-- ore -->
+    <div class="form-group">
+        <label for="oreFormazione" class="required">Durante gli anni di formazione in psicoterapia, quante ore circa di attività di psicoterapia ha svolto, escludendo il tirocinio:</label>
+        <input type="number" id="oreFormazione" name="oreFormazione" min="0" required>
+        <div class="error-message" id="oreFormazione-error">Inserisci il numero di ore</div>
+    </div>
+    
+    <!-- aspetti da cambiare -->
+    <div class="form-group">
+        <label for="aspettiCambiare" class="required">Quali aspetti cambierebbe/modificherebbe della sua formazione in psicoterapia:</label>
+        <textarea id="aspettiCambiare" name="aspettiCambiare" rows="3" required></textarea>
+        <div class="error-message" id="aspettiCambiare-error">Inserisci gli aspetti da cambiare</div>
+    </div>
+    
+    <!-- punti forza -->
+    <div class="form-group">
+        <label for="puntiForza" class="required">Punti di forza della sua formazione:</label>
+        <textarea id="puntiForza" name="puntiForza" rows="3" required></textarea>
+        <div class="error-message" id="puntiForza-error">Inserisci i punti di forza</div>
+    </div>
+</div>

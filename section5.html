@@ -1,0 +1,57 @@
+<!-- partecipazione cultura professionale -->
+<div class="section">
+    <div class="section-title">Partecipazione alla Cultura Professionale</div>
+    
+    <!-- iscrizione SITCC -->
+    <div class="form-group">
+        <label class="required">E' iscritto alla SITCC?</label>
+        <div class="radio-group inline-radio">
+            <label class="radio-option">
+                <input type="radio" name="iscrittoSITCC" value="Si" required onchange="toggleConditionalField('iscrittoSITCC', 'Si', 'siSITCC'); toggleConditionalField('iscrittoSITCC', 'No', 'noSITCC');"> Si
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="iscrittoSITCC" value="No" onchange="toggleConditionalField('iscrittoSITCC', 'Si', 'siSITCC'); toggleConditionalField('iscrittoSITCC', 'No', 'noSITCC');"> No
+            </label>
+        </div>
+        <div class="error-message" id="iscrittoSITCC-error">Seleziona un'opzione</div>
+        
+        <!-- condizionali SITCC=si -->
+        <div class="conditional-field" id="siSITCC">
+            <div class="form-group">
+                <label class="required">Perché è iscritto alla SITCC?</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoSiSITCC" value="Mi piace fare parte di una comunità scientifica" class="at-least-one-required"> 
+                        Mi piace fare parte di una comunità scientifica
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoSiSITCC" value="È un'occasione di arricchimento professionale" class="at-least-one-required"> 
+                        È un'occasione di arricchimento professionale
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoSiSITCC" value="È un modo per stare in contatto con i colleghi" class="at-least-one-required"> 
+                        È un modo per stare in contatto con i colleghi
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoSiSITCC" value="Mi dà modo di partecipare ai congressi" class="at-least-one-required"> 
+                        Mi dà modo di partecipare ai congressi
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoSiSITCC" value="Apprezzo i vantaggi affiliativi (rivista, sconti sui corsi, ecc.)" class="at-least-one-required"> 
+                        Apprezzo i vantaggi affiliativi (rivista, sconti sui corsi, ecc.)
+                    </label>
+                </div>
+                <div class="error-message" id="motivoSiSITCC-error">Seleziona almeno un'opzione</div>
+            </div>
+        </div>
+        
+        <!-- condizionali SITCC=no -->
+        <div class="conditional-field" id="noSITCC">
+            <div class="form-group">
+                <label for="motivoNoSITCC">Perché no?</label>
+                <textarea id="motivoNoSITCC" name="motivoNoSITCC" rows="3"></textarea>
+                <div class="error-message" id="motivoNoSITCC-error">Inserisci il motivo</div>
+            </div>
+        </div>
+    </div>
+</div>
