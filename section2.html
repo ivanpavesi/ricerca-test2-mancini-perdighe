@@ -1,0 +1,259 @@
+<!-- attività lavorativa -->
+<div class="section">
+    <div class="section-title">Attività Lavorativa</div>
+    
+    <!-- lavora -->
+    <div class="form-group">
+        <label class="required">Lavora?</label>
+        <div class="radio-group inline-radio">
+            <label class="radio-option">
+                <input type="radio" name="lavora" value="Si" required onchange="toggleConditionalField('lavora', 'Si', 'lavoraConditional')"> Si
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="lavora" value="No" onchange="toggleConditionalField('lavora', 'Si', 'lavoraConditional')"> No
+            </label>
+        </div>
+        <div class="error-message" id="lavora-error">Seleziona un'opzione</div>
+        
+        <!-- condizionali lavora=si -->
+        <div class="conditional-field" id="lavoraConditional">
+            <!-- anno inizio -->
+            <div class="form-group">
+                <label for="lavoraAnno" class="required">Da quando (anno):</label>
+                <input type="number" id="lavoraAnno" name="lavoraAnno" min="1950" max="2025">
+                <div class="error-message" id="lavoraAnno-error">Inserisci l'anno</div>
+            </div>
+            
+            <!-- ore settimanali -->
+            <div class="form-group">
+                <label for="oreLavoro" class="required">Ore medie di lavoro su base settimanale:</label>
+                <input type="number" id="oreLavoro" name="oreLavoro" min="1" max="168">
+                <div class="error-message" id="oreLavoro-error">Inserisci le ore medie di lavoro</div>
+            </div>
+            
+            <!-- settore -->
+            <div class="form-group">
+                <label class="required">Settore:</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="settoreLavoro" value="Nel pubblico" class="at-least-one-required"> Nel pubblico
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="settoreLavoro" value="Nel privato" class="at-least-one-required"> Nel privato
+                    </label>
+                </div>
+                <div class="error-message" id="settoreLavoro-error">Seleziona almeno un'opzione</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- psicoterapeuta -->
+    <div class="form-group">
+        <label class="required">Lavora come psicoterapeuta?</label>
+        <div class="radio-group inline-radio">
+            <label class="radio-option">
+                <input type="radio" name="lavoraPsicoterapeuta" value="Si" required onchange="togglePsicoterapeutaFields()"> Si
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="lavoraPsicoterapeuta" value="No" onchange="togglePsicoterapeutaFields()"> No
+            </label>
+        </div>
+        <div class="error-message" id="lavoraPsicoterapeuta-error">Seleziona un'opzione</div>
+        
+        <!-- condizionali psicoterapeuta=no -->
+        <div class="conditional-field" id="nonPsicoterapeutaConditional">
+            <!-- tipo lavoro -->
+            <div class="form-group">
+                <label for="tipoLavoro" class="required">Specifichi il tipo di lavoro svolto:</label>
+                <input type="text" id="tipoLavoro" name="tipoLavoro" maxlength="150">
+                <div class="error-message" id="tipoLavoro-error">Specifica il tipo di lavoro svolto</div>
+            </div>
+            
+            <!-- motivo -->
+            <div class="form-group">
+                <label class="required">Motivo:</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="motivoNonPsicoterapeuta" value="Continuo a fare il lavoro che già facevo prima della specializzazione"> 
+                        Continuo a fare il lavoro che già facevo prima della specializzazione
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="motivoNonPsicoterapeuta" value="Sono in maternità"> 
+                        Sono in maternità
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="motivoNonPsicoterapeuta" value="Sono in aspettativa per motivi familiari"> 
+                        Sono in aspettativa per motivi familiari
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="motivoNonPsicoterapeuta" value="Il lavoro come psicoterapeuta non mi piace abbastanza"> 
+                        Il lavoro come psicoterapeuta non mi piace abbastanza
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="motivoNonPsicoterapeuta" value="Non sono riuscito a trovare lavoro come psicologo/psicoterapeuta nel pubblico"> 
+                        Non sono riuscito a trovare lavoro come psicologo/psicoterapeuta nel pubblico
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="motivoNonPsicoterapeuta" value="Altro" onchange="toggleConditionalField('motivoNonPsicoterapeuta', 'Altro', 'altroMotivoNonPsicoterapeuta')"> 
+                        Altro
+                    </label>
+                    
+                    <!-- altro -->
+                    <div class="conditional-field" id="altroMotivoNonPsicoterapeuta">
+                        <input type="text" id="specificaAltroMotivo" name="specificaAltroMotivo" placeholder="Specificare">
+                    </div>
+                </div>
+                <div class="error-message" id="motivoNonPsicoterapeuta-error">Seleziona un'opzione</div>
+            </div>
+            
+            <!-- no libera prof -->
+            <div class="form-group">
+                <label class="required">Non svolgo attività libero-professionale perché:</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoNonLiberoProf" value="Non ho fonti di invio di pazienti e non mi sento di rischiare" class="at-least-one-required"> 
+                        Non ho fonti di invio di pazienti e non mi sento di rischiare
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoNonLiberoProf" value="Non ho i mezzi economici per aprire uno studio" class="at-least-one-required"> 
+                        Non ho i mezzi economici per aprire uno studio
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoNonLiberoProf" value="Ho provato, ma non avevo sufficiente invio di pazienti" class="at-least-one-required"> 
+                        Ho provato, ma non avevo sufficiente invio di pazienti
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoNonLiberoProf" value="Non mi sento all'altezza" class="at-least-one-required"> 
+                        Non mi sento all'altezza
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="motivoNonLiberoProf" value="Altro" class="at-least-one-required" onchange="toggleConditionalField('motivoNonLiberoProf', 'Altro', 'altroMotivoNonLiberoProf', true)"> 
+                        Altro
+                    </label>
+                    
+                    <!-- altro -->
+                    <div class="conditional-field" id="altroMotivoNonLiberoProf">
+                        <input type="text" id="specificaAltroMotivoNonLiberoProf" name="specificaAltroMotivoNonLiberoProf" placeholder="Specificare">
+                    </div>
+                </div>
+                <div class="error-message" id="motivoNonLiberoProf-error">Seleziona almeno un'opzione</div>
+            </div>
+        </div>
+        
+        <!-- condizionali psicoterapeuta=si -->
+        <div class="conditional-field" id="psicoterapeutaConditional">
+            <!-- anno inizio -->
+            <div class="form-group">
+                <label for="psicoterapeutaAnno" class="required">Da quando (anno):</label>
+                <input type="number" id="psicoterapeutaAnno" name="psicoterapeutaAnno" min="1950" max="2025">
+                <div class="error-message" id="psicoterapeutaAnno-error">Inserisci l'anno</div>
+            </div>
+            
+            <!-- settore -->
+            <div class="form-group">
+                <label class="required">Settore:</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="settorePsicoterapeuta" value="Nel pubblico" class="at-least-one-required" onchange="toggleConditionalField('settorePsicoterapeuta', 'Nel pubblico', 'pubblico', true)"> Nel pubblico
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="settorePsicoterapeuta" value="Nel privato" class="at-least-one-required" onchange="toggleConditionalField('settorePsicoterapeuta', 'Nel privato', 'privato', true)"> Nel privato
+                    </label>
+                </div>
+                <div class="error-message" id="settorePsicoterapeuta-error">Seleziona almeno un'opzione</div>
+                
+                <!-- pubblico -->
+                <div class="conditional-field" id="pubblico">
+                    <div class="form-group">
+                        <label class="required">Dove?</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="dovePubblico" value="Servizio di Salute Mentale adulti" class="at-least-one-required"> 
+                                Servizio di Salute Mentale adulti
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="dovePubblico" value="Servizio di Salute Mentale infanzia e adolescenza" class="at-least-one-required"> 
+                                Servizio di Salute Mentale infanzia e adolescenza
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="dovePubblico" value="Ser.D." class="at-least-one-required"> 
+                                Ser.D.
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="dovePubblico" value="Casa di cura convenzionata" class="at-least-one-required"> 
+                                Casa di cura convenzionata
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="dovePubblico" value="Altri servizi convenzionati con il pubblico" class="at-least-one-required"> 
+                                Altri servizi convenzionati con il pubblico
+                            </label>
+                        </div>
+                        <div class="error-message" id="dovePubblico-error">Seleziona almeno un'opzione</div>
+                    </div>
+                </div>
+                
+                <!-- privato -->
+                <div class="conditional-field" id="privato">
+                    <div class="form-group">
+                        <label class="required">Dove?</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="dovePrivato" value="Mio studio privato" class="at-least-one-required"> 
+                                Mio studio privato
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="dovePrivato" value="Poliambulatorio (con varie figure professionali presenti)" class="at-least-one-required"> 
+                                Poliambulatorio (con varie figure professionali presenti)
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="dovePrivato" value="Studio piccolo (con 3 professionisti)" class="at-least-one-required"> 
+                                Studio piccolo (con 3 professionisti)
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="dovePrivato" value="Studio medio (da 4 a 8 professionisti)" class="at-least-one-required"> 
+                                Studio medio (da 4 a 8 professionisti)
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="dovePrivato" value="Studio grande (più di 8 professionisti)" class="at-least-one-required"> 
+                                Studio grande (più di 8 professionisti)
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="dovePrivato" value="Piattaforma online (es. Serenis, Unobravo, etc)" class="at-least-one-required"> 
+                                Piattaforma online (es. Serenis, Unobravo, etc)
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="dovePrivato" value="Altro" class="at-least-one-required" onchange="toggleConditionalField('dovePrivato', 'Altro', 'altroDovePrivato', true)"> 
+                                Altro
+                            </label>
+                            
+                            <!-- altro -->
+                            <div class="conditional-field" id="altroDovePrivato">
+                                <input type="text" id="specificaAltroDovePrivato" name="specificaAltroDovePrivato" placeholder="Specificare" maxlength="155">
+                            </div>
+                        </div>
+                        <div class="error-message" id="dovePrivato-error">Seleziona almeno un'opzione</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ore psicoterapia -->
+            <div class="form-group">
+                <label for="orePsicoterapia" class="required">Mediamente quante ore del suo lavoro settimanale sono impiegate in attività di psicoterapia?</label>
+                <input type="number" id="orePsicoterapia" name="orePsicoterapia" min="0" max="168">
+                <div class="error-message" id="orePsicoterapia-error">Inserisci le ore medie</div>
+            </div>
+            
+            <!-- ore piattaforme -->
+            <div class="form-group">
+                <label for="orePiattaforme">Mediamente quante ore del suo lavoro settimanale sono impiegate in attività di psicoterapia sulle piattaforme (Unobravo, Serenis, etc)?</label>
+                <input type="number" id="orePiattaforme" name="orePiattaforme" min="0" max="168">
+            </div>
+            
+            <!-- ore online -->
+            <div class="form-group">
+                <label for="oreOnline">Mediamente quante ore del suo lavoro settimanale sono impiegate in attività di psicoterapia online (es. Skype, Meet, Zoom etc)?</label>
+                <input type="number" id="oreOnline" name="oreOnline" min="0" max="168">
+            </div>
+        </div>
+    </div>
+</div>
