@@ -454,3 +454,124 @@ button[type="submit"]:hover {
     padding: 10px 5px;
   }
 }
+
+/* Stili di base */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Stili per il banner */
+.banner {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #00356B;
+    padding-bottom: 20px;
+}
+
+/* Stili per il form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Supporto per IE */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+    *width: 95%; /* Hack per IE7 */
+}
+
+/* Fallback per flexbox */
+.form-group {
+    *zoom: 1; /* Per IE7 */
+}
+.form-group:before,
+.form-group:after {
+    content: " ";
+    display: table;
+}
+.form-group:after {
+    clear: both;
+}
+
+button {
+    background-color: #00356B;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    min-height: 44px; /* Altezza minima per target touch */
+}
+
+button:hover {
+    background-color: #002548;
+}
+
+/* Stili per dispositivi mobili */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    h3, h4 {
+        font-size: 16px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    /* Aumenta dimensione elementi touch su mobile */
+    input[type="radio"],
+    input[type="checkbox"] {
+        transform: scale(1.2);
+        margin-right: 10px;
+    }
+    
+    /* Migliora spaziatura per opzioni radio/checkbox */
+    .radio-option,
+    .checkbox-option {
+        margin-bottom: 10px;
+    }
+}
+
+/* Stili per schermi molto piccoli */
+@media (max-width: 480px) {
+    .container {
+        padding: 8px;
+    }
+    
+    button {
+        width: 100%; /* Bottoni a larghezza piena su schermi molto piccoli */
+    }
+}

@@ -1,0 +1,51 @@
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* Make form elements responsive */
+input, select, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    font-size: 16px; /* Better for mobile touch targets */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1, h2, h3 {
+        font-size: 1.5em;
+    }
+    
+    .question-container {
+        padding: 10px;
+    }
+}
+
+/* Ensure buttons are easily tappable on mobile */
+button {
+    min-height: 44px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
