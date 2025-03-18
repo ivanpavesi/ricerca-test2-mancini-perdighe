@@ -10,16 +10,50 @@
   --error-color: #e74c3c;        /* Rosso */
   --shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
   --border-radius: 8px;
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
+/* Reset completo compatibile con tutti i browser */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* Legacy browser display setup */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* Box model universale */
+*, *:before, *:after {
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 /* Stili base */
+html {
+  -ms-text-size-adjust: 100%; /* Fix IE */
+  -webkit-text-size-adjust: 100%; /* Fix iOS */
+}
+
 body {
   font-family: var(--font-family);
   line-height: 1.6;
@@ -28,6 +62,9 @@ body {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  min-width: 320px; /* Minimo per mobile */
 }
 
 .container {
@@ -35,6 +72,14 @@ body {
   margin: 0 auto;
   padding: 20px;
   width: 100%;
+  position: relative;
+}
+
+/* Fix per IE */
+.ie .container {
+  display: block;
+  width: 100%;
+  max-width: 800px;
 }
 
 /* Banner principale */
@@ -45,7 +90,13 @@ body {
   padding: 25px 20px;
   margin-bottom: 25px;
   border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
   box-shadow: var(--shadow);
+  -webkit-box-shadow: var(--shadow);
+  -moz-box-shadow: var(--shadow);
+  -ms-box-shadow: var(--shadow);
 }
 
 .title-main {
@@ -76,12 +127,25 @@ body {
   padding: 8px 15px;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
   margin-top: 10px;
   cursor: pointer;
 }
 
 .title-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Aggiunta per IE e browser che non supportano rgba */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .title-link {
+    border: 2px solid #ffffff;
+  }
+  .title-link:hover {
+    background-color: #2a557b;
+  }
 }
 
 /* Titolo */
@@ -92,7 +156,13 @@ body {
   padding: 15px;
   margin-bottom: 25px;
   border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
   box-shadow: var(--shadow);
+  -webkit-box-shadow: var(--shadow);
+  -moz-box-shadow: var(--shadow);
+  -ms-box-shadow: var(--shadow);
 }
 
 .questionnaire-title h2 {
@@ -109,7 +179,13 @@ body {
   line-height: 1.7;
   background-color: var(--card-color);
   border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
   box-shadow: var(--shadow);
+  -webkit-box-shadow: var(--shadow);
+  -moz-box-shadow: var(--shadow);
+  -ms-box-shadow: var(--shadow);
 }
 
 .introduction-text p {
@@ -132,8 +208,14 @@ body {
 .section {
   background-color: var(--card-color);
   border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
   margin-bottom: 25px;
   box-shadow: var(--shadow);
+  -webkit-box-shadow: var(--shadow);
+  -moz-box-shadow: var(--shadow);
+  -ms-box-shadow: var(--shadow);
   overflow: hidden;
 }
 
@@ -146,12 +228,23 @@ body {
   font-size: 18px;
 }
 
+/* Fix per IE */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .section {
+    display: block;
+    border: 1px solid #ddd;
+  }
+}
+
 /* Gruppi di campi */
 .form-group {
   margin-bottom: 20px;
   padding: 20px 15px;
   background-color: var(--primary-light);
   border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
 }
 
 label {
@@ -172,40 +265,54 @@ textarea {
   padding: 12px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
   font-size: 16px;
   margin: 0 auto;
   display: block;
   font-family: var(--font-family);
 }
 
+/* Fix per iOS */
+input[type="text"],
+input[type="number"],
+select, 
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 /* Radio/Checkbox */
 .radio-group,
 .checkbox-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
+  text-align: center;
   margin-top: 10px;
   width: 100%;
   background-color: white;
   padding: 15px;
   border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
 }
 
 /* Opzioni */
 .radio-option,
 .checkbox-option {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  gap: 10px;
+  position: relative;
+  display: block;
   width: 100%;
   max-width: 500px;
-  margin-bottom: 10px;
+  margin: 0 auto 10px;
   padding: 12px 15px;
   background-color: var(--primary-light);
   border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.15s ease;
 }
 
 .radio-option:hover,
@@ -218,56 +325,89 @@ textarea {
 .checkbox-option input[type="checkbox"] {
   width: 18px;
   height: 18px;
-  margin: 0;
-  justify-self: center;
+  margin: 0 10px 0 0;
+  vertical-align: middle;
+  float: left;
 }
 
 .radio-option label,
 .checkbox-option label {
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: auto;
+  display: inline-block;
   text-align: left;
   font-weight: normal;
   font-size: 16px;
+  vertical-align: middle;
+}
+
+/* Fix per Safari */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .radio-option input[type="radio"],
+  .checkbox-option input[type="checkbox"] {
+    margin-top: 2px;
+  }
+}
+
+/* Aggiunte per IE */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .radio-option label:after,
+  .checkbox-option label:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
 /* Radio orizzontali */
 .inline-radio {
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  text-align: center;
 }
 
 .inline-radio .radio-option {
   min-width: 100px;
-  flex: 0 0 auto;
-  justify-content: center;
+  display: inline-block;
+  width: auto;
+  margin: 5px;
+  text-align: center;
+}
+
+.inline-radio .radio-option input[type="radio"] {
+  float: none;
+  display: block;
+  margin: 0 auto 8px;
+}
+
+.inline-radio .radio-option label {
+  display: block;
+  text-align: center;
 }
 
 /* Valutazioni */
 .rating-scale {
-  display: flex;
-  justify-content: space-between;
+  display: block;
+  text-align: center;
   width: 100%;
   max-width: 400px;
   margin: 15px auto 5px;
   padding: 15px;
   background-color: white;
   border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
 }
 
 .rating-option {
+  display: inline-block;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin: 0 10px;
 }
 
 .rating-option input[type="radio"] {
   margin: 0 auto 8px;
+  display: block;
 }
 
 .rating-option label {
@@ -275,16 +415,26 @@ textarea {
   padding: 0;
   font-weight: 600;
   font-size: 18px;
+  display: block;
 }
 
 .rating-labels {
-  display: flex;
-  justify-content: space-between;
+  display: block;
   width: 100%;
   max-width: 400px;
   margin: 5px auto 15px;
   padding: 0 15px;
   font-size: 14px;
+  position: relative;
+  overflow: hidden; /* Per i float */
+}
+
+.rating-labels .rating-label-left {
+  float: left;
+}
+
+.rating-labels .rating-label-right {
+  float: right;
 }
 
 /* Campi condizionali */
@@ -293,8 +443,12 @@ textarea {
   margin: 15px auto;
   padding: 15px;
   border-left: 3px solid var(--primary-color);
+  background-color: #eaf2fc; /* Fallback per rgba */
   background-color: rgba(234, 242, 252, 0.5);
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  -webkit-border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  -moz-border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  -ms-border-radius: 0 var(--border-radius) var(--border-radius) 0;
   width: 100%;
   max-width: 650px;
 }
@@ -312,11 +466,17 @@ button[type="submit"] {
   padding: 15px 25px;
   font-size: 18px;
   border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
   cursor: pointer;
   font-weight: 600;
   width: 100%;
   max-width: 300px;
   transition: background-color 0.2s ease;
+  -webkit-transition: background-color 0.2s ease;
+  -moz-transition: background-color 0.2s ease;
+  -ms-transition: background-color 0.2s ease;
 }
 
 button[type="submit"]:hover {
@@ -337,12 +497,18 @@ button[type="submit"]:disabled {
   padding: 25px;
   background-color: var(--primary-light);
   border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
   box-shadow: var(--shadow);
+  -webkit-box-shadow: var(--shadow);
+  -moz-box-shadow: var(--shadow);
+  -ms-box-shadow: var(--shadow);
   max-width: 600px;
 }
 
 /* Asterisco campi obbligatori */
-.required::after {
+.required:after {
   content: " *";
   color: var(--error-color);
   font-weight: bold;
@@ -367,8 +533,123 @@ button[type="submit"]:disabled {
   margin-top: 15px;
   padding: 10px;
   border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
   text-align: center;
   font-weight: 500;
+}
+
+/* Clearfix per IE e browser datati */
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Fix specifici per iOS */
+@supports (-webkit-touch-callout: none) {
+  input, 
+  select, 
+  textarea {
+    font-size: 16px; /* Previene lo zoom automatico */
+  }
+  
+  .radio-option,
+  .checkbox-option {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Fix per iOS input date/time */
+  input[type="date"],
+  input[type="time"] {
+    display: block;
+    min-height: 44px; /* Per migliore toccabilità */
+  }
+  
+  /* Fix per outline su focus */
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus {
+    outline: none;
+  }
+  
+  /* Fix per bottoni iOS */
+  button, 
+  [type="button"],
+  [type="submit"] {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+/* Fix specifici per Safari */
+@supports (not (-ms-ime-align:auto)) and ((-webkit-hyphens:none) or (not (-moz-appearance:none))) {
+  select {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23555' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  select::-ms-expand {
+    display: none;
+  }
+}
+
+/* Fix per Internet Explorer */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* IE10+ CSS */
+  .radio-group,
+  .checkbox-group {
+    display: block;
+  }
+  
+  .rating-scale {
+    display: block;
+    text-align: center;
+  }
+  
+  .rating-option {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  .conditional-field {
+    background-color: #eaf2fc; /* Colore solido per IE che non supporta rgba */
+  }
+  
+  /* Fix per allineamento vertical IE */
+  .checkbox-option, 
+  .radio-option {
+    line-height: 1.4;
+  }
+  
+  .checkbox-option input, 
+  .radio-option input {
+    vertical-align: top;
+    margin-top: 3px;
+  }
+  
+  /* Fix per font-family */
+  body {
+    font-family: Arial, sans-serif;
+  }
+}
+
+/* Fix specifici per Microsoft Edge Legacy */
+@supports (-ms-ime-align:auto) {
+  /* Edge CSS */
+  select {
+    -ms-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23555' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+  }
 }
 
 /* Responsive Design */
@@ -391,13 +672,10 @@ button[type="submit"]:disabled {
     width: 90%;
   }
   
-  .inline-radio {
-    flex-direction: column;
-  }
-  
   .inline-radio .radio-option {
     width: 80%;
-    justify-content: flex-start;
+    display: block;
+    margin: 10px auto;
   }
   
   .rating-scale {
@@ -411,6 +689,21 @@ button[type="submit"]:disabled {
   .title-secondary {
     font-size: 18px;
   }
+  
+  /* Fix verticali per mobile */
+  .inline-radio {
+    display: block;
+  }
+  
+  .inline-radio .radio-option {
+    display: block;
+    width: 90%;
+    margin: 8px auto;
+  }
+  
+  .rating-scale .rating-option {
+    margin: 0 8px;
+  }
 }
 
 /* Mobile mini */
@@ -420,8 +713,7 @@ button[type="submit"]:disabled {
   }
   
   .radio-option, 
-  .checkbox-option,
-  .inline-radio .radio-option {
+  .checkbox-option {
     width: 100%;
     padding: 10px;
   }
@@ -449,18 +741,49 @@ button[type="submit"]:disabled {
     max-width: 100%;
     font-size: 16px;
   }
-}
-
-/* Fix iOS */
-@supports (-webkit-touch-callout: none) {
-  input, 
-  select, 
-  textarea {
-    font-size: 16px; /* No zoom */
+  
+  /* Fix ulteriori per dispositivi molto piccoli */
+  .title-main {
+    font-size: 24px;
   }
   
-  .radio-option,
-  .checkbox-option {
-    -webkit-tap-highlight-color: transparent;
+  .title-secondary {
+    font-size: 16px;
+  }
+  
+  .title-address {
+    font-size: 14px;
+  }
+}
+
+/* Fix per dispositivi con rapporto atipico */
+@media (max-height: 500px) and (orientation: landscape) {
+  .container {
+    padding: 10px;
+  }
+  
+  .banner {
+    padding: 15px 10px;
+    margin-bottom: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    padding: 15px 10px;
+  }
+  
+  .title-main {
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+  
+  .title-secondary {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .title-address, .title-schools {
+    font-size: 14px;
+    margin-bottom: 5px;
   }
 }
