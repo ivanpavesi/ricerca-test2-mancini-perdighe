@@ -54,38 +54,37 @@ function setupConditionalFields() {
 /**
  * Aggiorna la visibilità di tutti i campi condizionali in base alle selezioni correnti
  */
+/**
+ * Aggiorna la visibilità di tutti i campi condizionali in base alle selezioni correnti
+ */
 function updateConditionalFields() {
   // Gestione campi toggle semplici (data-toggle)
   document.querySelectorAll('[data-toggle]').forEach(el => {
-    if (el.checked) {
-      const targetId = el.getAttribute('data-toggle');
-      const toggleValue = el.getAttribute('data-toggle-value') || el.value;
-      const target = document.getElementById(targetId);
-      
-      if (target) {
-        const shouldShow = el.value === toggleValue;
-        target.style.display = shouldShow ? 'block' : 'none';
-        updateRequiredAttributes(target, shouldShow);
-      }
+    const targetId = el.getAttribute('data-toggle');
+    const toggleValue = el.getAttribute('data-toggle-value') || el.value;
+    const target = document.getElementById(targetId);
+    
+    if (target) {
+      const shouldShow = el.checked && el.value === toggleValue;
+      target.style.display = shouldShow ? 'block' : 'none';
+      updateRequiredAttributes(target, shouldShow);
     }
   });
   
   // Gestione campi toggle multipli (data-toggle-multiple)
   document.querySelectorAll('[data-toggle-multiple]').forEach(el => {
-    if (el.checked) {
-      const toggleConfig = el.getAttribute('data-toggle-multiple');
-      if (toggleConfig) {
-        toggleConfig.split(',').forEach(config => {
-          const [targetId, toggleValue] = config.split(':');
-          const target = document.getElementById(targetId);
-          
-          if (target) {
-            const shouldShow = el.value === toggleValue;
-            target.style.display = shouldShow ? 'block' : 'none';
-            updateRequiredAttributes(target, shouldShow);
-          }
-        });
-      }
+    const toggleConfig = el.getAttribute('data-toggle-multiple');
+    if (toggleConfig) {
+      toggleConfig.split(',').forEach(config => {
+        const [targetId, toggleValue] = config.split(':');
+        const target = document.getElementById(targetId);
+        
+        if (target) {
+          const shouldShow = el.checked && el.value === toggleValue;
+          target.style.display = shouldShow ? 'block' : 'none';
+          updateRequiredAttributes(target, shouldShow);
+        }
+      });
     }
   });
   
