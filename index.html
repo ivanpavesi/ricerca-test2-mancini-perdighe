@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionario APC - Scuole di Specializzazione in Psicoterapia Cognitiva</title>
-    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <!-- Banner -->
         <header class="banner">
-            <h1 class="title-main">APC <span style="font-size: 0.6em;">(ver 9.5🤞)</span></h1>
+            <h1 class="title-main">APC <span style="font-size: 0.6em;">(ver 4.0)</span></h1>
             <h2 class="title-secondary">Scuole di Specializzazione in Psicoterapia Cognitiva</h2>
             <h3 class="title-address">Viale Castro Pretorio 116 - 00185 Roma</h3>
             <h4 class="title-schools">APC SPC IGB AIPC SICC</h4>
@@ -23,12 +23,12 @@
         </div>
         
         <!-- testo introduttivo -->
-        <div class="introduction-text" style="text-align: justify;">
+        <div class="introduction-text">
             <p>Caro collega,</p>
             <p>stiamo facendo un aggiornamento di una precedente ricerca sul destino <strong>professionale degli specializzati nelle nostre scuole</strong>.</p>
             <p>Ci sembra importante, infatti, avere informazioni sulla situazione professionale degli specializzati e sull'impatto che la formazione in psicoterapia ha avuto sulla possibilità di impiego o sulla qualità del lavoro già svolto.</p>
             <p>A tal fine chiediamo la sua collaborazione attraverso la <strong>compilazione e l'invio di un questionario, che si compila in pochissimi minuti</strong>. Il questionario è anonimo.</p>
-            <p>Per qualsiasi dubbio, può scrivere a <a href="mailto:perdighe@apc.it" style="color:#00356B; text-decoration:underline;">perdighe@apc.it</a></p>
+            <p>Per qualsiasi dubbio, può scrivere a <a href="mailto:perdighe@apc.it">perdighe@apc.it</a></p>
             <p>Tra qualche mese i risultati dell'indagine saranno disponibili sui nostri siti.</p>
             <p>Se per qualche nostro errore o perché abbiamo più indirizzi di posta elettronica, la richiesta le arriva più di una volta, la preghiamo di compilare il questionario una sola volta.</p>
             <p>La ringraziamo in anticipo per la collaborazione e cogliamo l'occasione per inviarle in nostri più cordiali saluti</p>
@@ -36,17 +36,918 @@
         </div>
 
         <form id="questionnaireForm">
-            <!-- sezioni del questionario -->
-            <div id="section1"></div>
-            <div id="section2"></div>
-            <div id="section3"></div>
-            <div id="section4"></div>
-            <div id="section5"></div>
+            <!-- SEZIONE 1: Dati -->
+            <div id="section1" class="section">
+                <div class="section-title">Dati</div>
+                
+                <!-- età -->
+                <div class="form-group">
+                    <label for="dati_eta" class="required">Età:</label>
+                    <input type="number" id="dati_eta" name="dati_eta" min="18" max="100" required>
+                    <div class="error-message" id="dati_eta-error">Inserisci la tua età</div>
+                </div>
+                
+                <!-- sesso -->
+                <div class="form-group">
+                    <label class="required">Sesso:</label>
+                    <div class="radio-group inline-radio">
+                        <label class="radio-option">
+                            <input type="radio" name="dati_sesso" value="Maschile" required> Maschile
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="dati_sesso" value="Femminile"> Femminile
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="dati_sesso" value="Altro"> Altro
+                        </label>
+                    </div>
+                    <div class="error-message" id="dati_sesso-error">Seleziona il tuo sesso</div>
+                </div>
+                
+                <!-- anno specializzazione -->
+                <div class="form-group">
+                    <label for="dati_anno_specializzazione" class="required">Anno di Specializzazione:</label>
+                    <select id="dati_anno_specializzazione" name="dati_anno_specializzazione" required>
+                        <option value="">Seleziona un anno</option>
+                        <!-- Anni verranno aggiunti dinamicamente dal JS -->
+                    </select>
+                    <div class="error-message" id="dati_anno_specializzazione-error">Seleziona l'anno di specializzazione</div>
+                </div>
+                
+                <!-- città specializzazione -->
+                <div class="form-group">
+                    <label for="dati_citta_specializzazione" class="required">Città di Specializzazione:</label>
+                    <select id="dati_citta_specializzazione" name="dati_citta_specializzazione" required>
+                        <option value="">Seleziona una città</option>
+                        <option value="Ancona">Ancona</option>
+                        <option value="Bari">Bari</option>
+                        <option value="Grosseto">Grosseto</option>
+                        <option value="Lecce">Lecce</option>
+                        <option value="Napoli">Napoli</option>
+                        <option value="Palermo">Palermo</option>
+                        <option value="Reggio Calabria">Reggio Calabria</option>
+                        <option value="Roma">Roma</option>
+                        <option value="Verona">Verona</option>
+                    </select>
+                    <div class="error-message" id="dati_citta_specializzazione-error">Seleziona la città di specializzazione</div>
+                </div>
+                
+                <!-- corso -->
+                <div class="form-group">
+                    <label class="required">Corso:</label>
+                    <div class="radio-group inline-radio">
+                        <label class="radio-option">
+                            <input type="radio" name="dati_tipo_corso" value="Corso 100 ore" required> Corso 100 ore
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="dati_tipo_corso" value="Corso 500 ore"> Corso 500 ore
+                        </label>
+                    </div>
+                    <div class="error-message" id="dati_tipo_corso-error">Seleziona il tipo di corso</div>
+                </div>
+                
+                <!-- precedenti specializzazioni -->
+                <div class="form-group">
+                    <label class="required">Precedenti specializzazioni in psicoterapia:</label>
+                    <div class="radio-group inline-radio">
+                        <label class="radio-option">
+                            <input type="radio" name="dati_precedenti_specializzazioni" value="Si" required> Si
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="dati_precedenti_specializzazioni" value="No"> No
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="dati_precedenti_specializzazioni" value="Non conclusa"> Non conclusa
+                        </label>
+                    </div>
+                    <div class="error-message" id="dati_precedenti_specializzazioni-error">Seleziona un'opzione</div>
+                </div>
+            </div>
 
+            <!-- SEZIONE 2: Attività Lavorativa -->
+            <div id="section2" class="section">
+                <div class="section-title">Attività Lavorativa</div>
+                
+                <!-- lavora -->
+                <div class="form-group">
+                    <label class="required">Lavora?</label>
+                    <div class="radio-group inline-radio">
+                        <label class="radio-option">
+                            <input type="radio" name="lavoro_stato_occupazionale" value="Si" required data-toggle="lavoraConditional"> Si
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="lavoro_stato_occupazionale" value="No" data-toggle="lavoraConditional" data-toggle-value="Si"> No
+                        </label>
+                    </div>
+                    <div class="error-message" id="lavoro_stato_occupazionale-error">Seleziona un'opzione</div>
+                    
+                    <!-- condizionali lavora=si -->
+                    <div class="conditional-field" id="lavoraConditional">
+                        <!-- anno inizio -->
+                        <div class="form-group">
+                            <label for="lavoro_anno_inizio" class="required">Da quando (anno):</label>
+                            <input type="number" id="lavoro_anno_inizio" name="lavoro_anno_inizio" min="1950" max="2025">
+                            <div class="error-message" id="lavoro_anno_inizio-error">Inserisci l'anno</div>
+                        </div>
+                        
+                        <!-- ore settimanali -->
+                        <div class="form-group">
+                            <label for="lavoro_ore_settimanali" class="required">Ore medie di lavoro su base settimanale:</label>
+                            <input type="number" id="lavoro_ore_settimanali" name="lavoro_ore_settimanali" min="1" max="168">
+                            <div class="error-message" id="lavoro_ore_settimanali-error">Inserisci le ore medie di lavoro</div>
+                        </div>
+                        
+                        <!-- settore -->
+                        <div class="form-group">
+                            <label class="required">Settore:</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="lavoro_settore" value="Nel pubblico" class="at-least-one-required"> Nel pubblico
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="lavoro_settore" value="Nel privato" class="at-least-one-required"> Nel privato
+                                </label>
+                            </div>
+                            <div class="error-message" id="lavoro_settore-error">Seleziona almeno un'opzione</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- psicoterapeuta -->
+                <div class="form-group">
+                    <label class="required">Lavora come psicoterapeuta?</label>
+                    <div class="radio-group inline-radio">
+                        <label class="radio-option">
+                            <input type="radio" name="lavoro_psicoterapeuta" value="Si" required data-toggle-multiple="psicoterapeutaConditional:Si,nonPsicoterapeutaConditional:No"> Si
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="lavoro_psicoterapeuta" value="No" data-toggle-multiple="psicoterapeutaConditional:Si,nonPsicoterapeutaConditional:No"> No
+                        </label>
+                    </div>
+                    <div class="error-message" id="lavoro_psicoterapeuta-error">Seleziona un'opzione</div>
+                    
+                    <!-- condizionali psicoterapeuta=no -->
+                    <div class="conditional-field" id="nonPsicoterapeutaConditional">
+                        <!-- tipo lavoro -->
+                        <div class="form-group">
+                            <label for="lavoro_non_psicoter_tipo" class="required">Specifichi il tipo di lavoro svolto:</label>
+                            <input type="text" id="lavoro_non_psicoter_tipo" name="lavoro_non_psicoter_tipo" maxlength="150">
+                            <div class="error-message" id="lavoro_non_psicoter_tipo-error">Specifica il tipo di lavoro svolto</div>
+                        </div>
+                        
+                        <!-- motivo -->
+                        <div class="form-group">
+                            <label class="required">Motivo:</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="lavoro_non_psicoter_motivo" value="Continuo a fare il lavoro che già facevo prima della specializzazione"> 
+                                    Continuo a fare il lavoro che già facevo prima della specializzazione
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="lavoro_non_psicoter_motivo" value="Sono in maternità"> 
+                                    Sono in maternità
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="lavoro_non_psicoter_motivo" value="Sono in aspettativa per motivi familiari"> 
+                                    Sono in aspettativa per motivi familiari
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="lavoro_non_psicoter_motivo" value="Il lavoro come psicoterapeuta non mi piace abbastanza"> 
+                                    Il lavoro come psicoterapeuta non mi piace abbastanza
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="lavoro_non_psicoter_motivo" value="Non sono riuscito a trovare lavoro come psicologo/psicoterapeuta nel pubblico"> 
+                                    Non sono riuscito a trovare lavoro come psicologo/psicoterapeuta nel pubblico
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="lavoro_non_psicoter_motivo" value="Altro" data-toggle="altroMotivoNonPsicoterapeuta"> 
+                                    Altro
+                                </label>
+                                
+                                <!-- altro -->
+                                <div class="conditional-field" id="altroMotivoNonPsicoterapeuta">
+                                    <input type="text" id="lavoro_non_psicoter_motivo_altro" name="lavoro_non_psicoter_motivo_altro" placeholder="Specificare">
+                                </div>
+                            </div>
+                            <div class="error-message" id="lavoro_non_psicoter_motivo-error">Seleziona un'opzione</div>
+                        </div>
+                        
+                        <!-- no libera prof -->
+                        <div class="form-group">
+                            <label class="required">Non svolgo attività libero-professionale perché:</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="lavoro_non_libprof_motivo" value="Non ho fonti di invio di pazienti e non mi sento di rischiare" class="at-least-one-required"> 
+                                    Non ho fonti di invio di pazienti e non mi sento di rischiare
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="lavoro_non_libprof_motivo" value="Non ho i mezzi economici per aprire uno studio" class="at-least-one-required"> 
+                                    Non ho i mezzi economici per aprire uno studio
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="lavoro_non_libprof_motivo" value="Ho provato, ma non avevo sufficiente invio di pazienti" class="at-least-one-required"> 
+                                    Ho provato, ma non avevo sufficiente invio di pazienti
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="lavoro_non_libprof_motivo" value="Non mi sento all'altezza" class="at-least-one-required"> 
+                                    Non mi sento all'altezza
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="lavoro_non_libprof_motivo" value="Altro" class="at-least-one-required" data-toggle="altroMotivoNonLiberoProf"> 
+                                    Altro
+                                </label>
+                                
+                                <!-- altro -->
+                                <div class="conditional-field" id="altroMotivoNonLiberoProf">
+                                    <input type="text" id="lavoro_non_libprof_motivo_altro" name="lavoro_non_libprof_motivo_altro" placeholder="Specificare">
+                                </div>
+                            </div>
+                            <div class="error-message" id="lavoro_non_libprof_motivo-error">Seleziona almeno un'opzione</div>
+                        </div>
+                    </div>
+                    
+                    <!-- condizionali psicoterapeuta=si -->
+                    <div class="conditional-field" id="psicoterapeutaConditional">
+                        <!-- anno inizio -->
+                        <div class="form-group">
+                            <label for="psicoter_anno_inizio" class="required">Da quando (anno):</label>
+                            <input type="number" id="psicoter_anno_inizio" name="psicoter_anno_inizio" min="1950" max="2025">
+                            <div class="error-message" id="psicoter_anno_inizio-error">Inserisci l'anno</div>
+                        </div>
+                        
+                        <!-- settore -->
+                        <div class="form-group">
+                            <label class="required">Settore:</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="psicoter_settore" value="Nel pubblico" class="at-least-one-required" data-toggle="pubblico"> Nel pubblico
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="psicoter_settore" value="Nel privato" class="at-least-one-required" data-toggle="privato"> Nel privato
+                                </label>
+                            </div>
+                            <div class="error-message" id="psicoter_settore-error">Seleziona almeno un'opzione</div>
+                            
+                            <!-- pubblico -->
+                            <div class="conditional-field" id="pubblico">
+                                <div class="form-group">
+                                    <label class="required">Dove?</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" name="psicoter_pubblico_dove" value="Servizio di Salute Mentale adulti" class="at-least-one-required"> 
+                                            Servizio di Salute Mentale adulti
+                                        </label>
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" name="psicoter_pubblico_dove" value="Servizio di Salute Mentale infanzia e adolescenza" class="at-least-one-required"> 
+                                            Servizio di Salute Mentale infanzia e adolescenza
+                                        </label>
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" name="psicoter_pubblico_dove" value="Ser.D." class="at-least-one-required"> 
+                                            Ser.D.
+                                        </label>
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" name="psicoter_pubblico_dove" value="Casa di cura convenzionata" class="at-least-one-required"> 
+                                            Casa di cura convenzionata
+                                        </label>
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" name="psicoter_pubblico_dove" value="Altri servizi convenzionati con il pubblico" class="at-least-one-required"> 
+                                            Altri servizi convenzionati con il pubblico
+                                        </label>
+                                    </div>
+                                    <div class="error-message" id="psicoter_pubblico_dove-error">Seleziona almeno un'opzione</div>
+                                </div>
+                            </div>
+                            
+                            <!-- privato -->
+                            <div class="conditional-field" id="privato">
+                                <div class="form-group">
+                                    <label class="required">Dove?</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" name="psicoter_privato_dove" value="Mio studio privato" class="at-least-one-required"> 
+                                            Mio studio privato
+                                        </label>
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" name="psicoter_privato_dove" value="Poliambulatorio (con varie figure professionali presenti)" class="at-least-one-required"> 
+                                            Poliambulatorio (con varie figure professionali presenti)
+                                        </label>
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" name="psicoter_privato_dove" value="Studio piccolo (con 3 professionisti)" class="at-least-one-required"> 
+                                            Studio piccolo (con 3 professionisti)
+                                        </label>
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" name="psicoter_privato_dove" value="Studio medio (da 4 a 8 professionisti)" class="at-least-one-required"> 
+                                            Studio medio (da 4 a 8 professionisti)
+                                        </label>
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" name="psicoter_privato_dove" value="Studio grande (più di 8 professionisti)" class="at-least-one-required"> 
+                                            Studio grande (più di 8 professionisti)
+                                        </label>
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" name="psicoter_privato_dove" value="Piattaforma online (es. Serenis, Unobravo, etc)" class="at-least-one-required"> 
+                                            Piattaforma online (es. Serenis, Unobravo, etc)
+                                        </label>
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" name="psicoter_privato_dove" value="Altro" class="at-least-one-required" data-toggle="altroDovePrivato"> 
+                                            Altro
+                                        </label>
+                                        
+                                        <!-- altro -->
+                                        <div class="conditional-field" id="altroDovePrivato">
+                                            <input type="text" id="psicoter_privato_dove_altro" name="psicoter_privato_dove_altro" placeholder="Specificare" maxlength="155">
+                                        </div>
+                                    </div>
+                                    <div class="error-message" id="psicoter_privato_dove-error">Seleziona almeno un'opzione</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- ore psicoterapia -->
+                        <div class="form-group">
+                            <label for="psicoter_ore_settimanali" class="required">Mediamente quante ore del suo lavoro settimanale sono impiegate in attività di psicoterapia?</label>
+                            <input type="number" id="psicoter_ore_settimanali" name="psicoter_ore_settimanali" min="0" max="168">
+                            <div class="error-message" id="psicoter_ore_settimanali-error">Inserisci le ore medie</div>
+                        </div>
+                        
+                        <!-- ore piattaforme -->
+                        <div class="form-group">
+                            <label for="psicoter_ore_piattaforme">Mediamente quante ore del suo lavoro settimanale sono impiegate in attività di psicoterapia sulle piattaforme (Unobravo, Serenis, etc)?</label>
+                            <input type="number" id="psicoter_ore_piattaforme" name="psicoter_ore_piattaforme" min="0" max="168">
+                        </div>
+                        
+                        <!-- ore online -->
+                        <div class="form-group">
+                            <label for="psicoter_ore_online">Mediamente quante ore del suo lavoro settimanale sono impiegate in attività di psicoterapia online (es. Skype, Meet, Zoom etc)?</label>
+                            <input type="number" id="psicoter_ore_online" name="psicoter_ore_online" min="0" max="168">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEZIONE 3: Soddisfazione Professionale -->
+            <div id="section3" class="section">
+                <div class="section-title">Soddisfazione Professionale</div>
+                
+                <!-- soddisfazione globale -->
+                <div class="form-group">
+                    <label class="required">Quanto è globalmente soddisfatto della sua situazione professionale?</label>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_globale_1" name="soddisf_globale" value="1" required data-toggle-range="nonSoddisfattoConditional:1,3">
+                            <label for="soddisf_globale_1">1</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_globale_2" name="soddisf_globale" value="2" data-toggle-range="nonSoddisfattoConditional:1,3">
+                            <label for="soddisf_globale_2">2</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_globale_3" name="soddisf_globale" value="3" data-toggle-range="nonSoddisfattoConditional:1,3">
+                            <label for="soddisf_globale_3">3</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_globale_4" name="soddisf_globale" value="4" data-toggle-range="nonSoddisfattoConditional:1,3">
+                            <label for="soddisf_globale_4">4</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_globale_5" name="soddisf_globale" value="5" data-toggle-range="nonSoddisfattoConditional:1,3">
+                            <label for="soddisf_globale_5">5</label>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span class="rating-label-left">per niente</span>
+                        <span class="rating-label-right">del tutto</span>
+                    </div>
+                    <div class="error-message" id="soddisf_globale-error">Seleziona un livello di soddisfazione</div>
+                    
+                    <!-- ragione non soddisfatto -->
+                    <div class="conditional-field" id="nonSoddisfattoConditional">
+                        <div class="form-group">
+                            <label for="soddisf_globale_bassa_ragione" class="required">Se non è soddisfatto, indichi la ragione principale:</label>
+                            <textarea id="soddisf_globale_bassa_ragione" name="soddisf_globale_bassa_ragione" rows="3"></textarea>
+                            <div class="error-message" id="soddisf_globale_bassa_ragione-error">Inserisci la ragione</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- soddisfazione economica -->
+                <div class="form-group">
+                    <label class="required">Quanto è soddisfatto della sua situazione professionale da punto di vista economico?</label>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_economica_1" name="soddisf_economica" value="1" required>
+                            <label for="soddisf_economica_1">1</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_economica_2" name="soddisf_economica" value="2">
+                            <label for="soddisf_economica_2">2</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_economica_3" name="soddisf_economica" value="3">
+                            <label for="soddisf_economica_3">3</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_economica_4" name="soddisf_economica" value="4">
+                            <label for="soddisf_economica_4">4</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_economica_5" name="soddisf_economica" value="5">
+                            <label for="soddisf_economica_5">5</label>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span class="rating-label-left">per niente</span>
+                        <span class="rating-label-right">del tutto</span>
+                    </div>
+                    <div class="error-message" id="soddisf_economica-error">Seleziona un livello di soddisfazione</div>
+                </div>
+                
+                <!-- gratificazione professionale -->
+                <div class="form-group">
+                    <label class="required">Quando è globalmente soddisfatto dal punto di vista della gratificazione professionale?</label>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_gratificazione_1" name="soddisf_gratificazione" value="1" required>
+                            <label for="soddisf_gratificazione_1">1</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_gratificazione_2" name="soddisf_gratificazione" value="2">
+                            <label for="soddisf_gratificazione_2">2</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_gratificazione_3" name="soddisf_gratificazione" value="3">
+                            <label for="soddisf_gratificazione_3">3</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_gratificazione_4" name="soddisf_gratificazione" value="4">
+                            <label for="soddisf_gratificazione_4">4</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_gratificazione_5" name="soddisf_gratificazione" value="5">
+                            <label for="soddisf_gratificazione_5">5</label>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span class="rating-label-left">per niente</span>
+                        <span class="rating-label-right">del tutto</span>
+                    </div>
+                    <div class="error-message" id="soddisf_gratificazione-error">Seleziona un livello di soddisfazione</div>
+                </div>
+                
+                <!-- fonti invio -->
+                <div class="form-group">
+                    <label class="required">Quali sono le sue principali fonti di invio o quelle che le sembrano funzionare di più? (può indicare anche due risposte):</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="soddisf_fonti_invio" value="Colleghi (psichiatri e psicologi)" class="max-three-required"> 
+                            Colleghi (psichiatri e psicologi)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="soddisf_fonti_invio" value="Medico di base" class="max-three-required"> 
+                            Medico di base
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="soddisf_fonti_invio" value="Altri pazienti" class="max-three-required"> 
+                            Altri pazienti
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="soddisf_fonti_invio" value="Altri specialisti" class="max-three-required"> 
+                            Altri specialisti
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="soddisf_fonti_invio" value="Amici e conoscenti" class="max-three-required"> 
+                            Amici e conoscenti
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="soddisf_fonti_invio" value="Sito internet personale" class="max-three-required"> 
+                            Sito internet personale
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="soddisf_fonti_invio" value="Piattaforme di psicoterapia online" class="max-three-required"> 
+                            Piattaforme di psicoterapia online
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="soddisf_fonti_invio" value="Altro" class="max-three-required" data-toggle="altroFontiInvio"> 
+                            Altro
+                        </label>
+                        
+                        <!-- altro -->
+                        <div class="conditional-field" id="altroFontiInvio">
+                            <input type="text" id="soddisf_fonti_invio_altro" name="soddisf_fonti_invio_altro" placeholder="Specificare">
+                        </div>
+                    </div>
+                    <div class="error-message" id="soddisf_fonti_invio-error">Seleziona almeno una opzione e al massimo tre</div>
+                </div>
+                
+                <!-- traguardi -->
+                <div class="form-group">
+                    <label for="soddisf_traguardi_futuri" class="required">Quali traguardi professionali dovrebbe raggiungere per dirsi pienamente soddisfatto?</label>
+                    <textarea id="soddisf_traguardi_futuri" name="soddisf_traguardi_futuri" rows="3" maxlength="255" required></textarea>
+                    <div class="error-message" id="soddisf_traguardi_futuri-error">Inserisci i traguardi professionali</div>
+                </div>
+                
+                <!-- distanza traguardi -->
+                <div class="form-group">
+                    <label class="required">Pensando alla sua situazione professionale attuale, quanto si sente distante dai traguardi desiderati?</label>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_distanza_traguardi_1" name="soddisf_distanza_traguardi" value="1" required>
+                            <label for="soddisf_distanza_traguardi_1">1</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_distanza_traguardi_2" name="soddisf_distanza_traguardi" value="2">
+                            <label for="soddisf_distanza_traguardi_2">2</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_distanza_traguardi_3" name="soddisf_distanza_traguardi" value="3">
+                            <label for="soddisf_distanza_traguardi_3">3</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_distanza_traguardi_4" name="soddisf_distanza_traguardi" value="4">
+                            <label for="soddisf_distanza_traguardi_4">4</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_distanza_traguardi_5" name="soddisf_distanza_traguardi" value="5">
+                            <label for="soddisf_distanza_traguardi_5">5</label>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span class="rating-label-left">per niente</span>
+                        <span class="rating-label-right">moltissimo</span>
+                    </div>
+                    <div class="error-message" id="soddisf_distanza_traguardi-error">Seleziona un livello</div>
+                </div>
+                
+                <!-- fiducia -->
+                <div class="form-group">
+                    <label class="required">Quanto è fiducioso di poter colmare, se esiste, la distanza tra la sua situazione professionale attuale e quella desiderata, a cui aspira?</label>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_fiducia_1" name="soddisf_fiducia" value="1" required>
+                            <label for="soddisf_fiducia_1">1</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_fiducia_2" name="soddisf_fiducia" value="2">
+                            <label for="soddisf_fiducia_2">2</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_fiducia_3" name="soddisf_fiducia" value="3">
+                            <label for="soddisf_fiducia_3">3</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_fiducia_4" name="soddisf_fiducia" value="4">
+                            <label for="soddisf_fiducia_4">4</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="soddisf_fiducia_5" name="soddisf_fiducia" value="5">
+                            <label for="soddisf_fiducia_5">5</label>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span class="rating-label-left">per niente</span>
+                        <span class="rating-label-right">moltissimo</span>
+                    </div>
+                    <div class="error-message" id="soddisf_fiducia-error">Seleziona un livello</div>
+                </div>
+            </div>
+
+            <!-- SEZIONE 4: Soddisfazione per la formazione -->
+            <div id="section4" class="section">
+                <div class="section-title">Soddisfazione per la formazione</div>
+                
+                <!-- contributo scuola -->
+                <div class="form-group">
+                    <label class="required">Quanto il fatto di aver frequentato una scuola di psicoterapia ha contribuito alla sua attuale situazione professionale?</label>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <input type="radio" id="form_contributo_scuola_1" name="form_contributo_scuola" value="1" required>
+                            <label for="form_contributo_scuola_1">1</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_contributo_scuola_2" name="form_contributo_scuola" value="2">
+                            <label for="form_contributo_scuola_2">2</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_contributo_scuola_3" name="form_contributo_scuola" value="3">
+                            <label for="form_contributo_scuola_3">3</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_contributo_scuola_4" name="form_contributo_scuola" value="4">
+                            <label for="form_contributo_scuola_4">4</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_contributo_scuola_5" name="form_contributo_scuola" value="5">
+                            <label for="form_contributo_scuola_5">5</label>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span class="rating-label-left">per niente</span>
+                        <span class="rating-label-right">moltissimo</span>
+                    </div>
+                    <div class="error-message" id="form_contributo_scuola-error">Seleziona un livello</div>
+                </div>
+                
+                <!-- ragione -->
+                <div class="form-group">
+                    <label class="required">Spieghi la ragione:</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="form_contributo_ragione" value="Continuo a fare il lavoro che facevo prima" class="at-least-one-required"> 
+                            Continuo a fare il lavoro che facevo prima
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="form_contributo_ragione" value="Continuo a fare il lavoro che facevo prima come psicologo" class="at-least-one-required"> 
+                            Continuo a fare il lavoro che facevo prima come psicologo
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="form_contributo_ragione" value="Svolgo lo stesso lavoro, ma con maggiore competenza" class="at-least-one-required"> 
+                            Svolgo lo stesso lavoro, ma con maggiore competenza
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="form_contributo_ragione" value="Svolgo lo stesso lavoro, ma sono occupato più ore" class="at-least-one-required"> 
+                            Svolgo lo stesso lavoro, ma sono occupato più ore
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="form_contributo_ragione" value="Ho un lavoro proprio grazie alla formazione in psicoterapia" class="at-least-one-required"> 
+                            Ho un lavoro proprio grazie alla formazione in psicoterapia
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="form_contributo_ragione" value="Svolgo sia il lavoro di prima, sia il lavoro di psicoterapeuta" class="at-least-one-required"> 
+                            Svolgo sia il lavoro di prima, sia il lavoro di psicoterapeuta
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="form_contributo_ragione" value="Altro" class="at-least-one-required" data-toggle="altroRagioneContributo"> 
+                            Altro
+                        </label>
+                        
+                        <!-- altro -->
+                        <div class="conditional-field" id="altroRagioneContributo">
+                            <input type="text" id="form_contributo_ragione_altro" name="form_contributo_ragione_altro" placeholder="Specificare">
+                        </div>
+                    </div>
+                    <div class="error-message" id="form_contributo_ragione-error">Seleziona almeno un'opzione</div>
+                </div>
+                
+                <!-- soddisfazione competenze -->
+                <div class="form-group">
+                    <label class="required">Quanto è soddisfatto delle competenze acquisite con la formazione in psicoterapia?</label>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <input type="radio" id="form_soddisf_competenze_1" name="form_soddisf_competenze" value="1" required>
+                            <label for="form_soddisf_competenze_1">1</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_soddisf_competenze_2" name="form_soddisf_competenze" value="2">
+                            <label for="form_soddisf_competenze_2">2</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_soddisf_competenze_3" name="form_soddisf_competenze" value="3">
+                            <label for="form_soddisf_competenze_3">3</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_soddisf_competenze_4" name="form_soddisf_competenze" value="4">
+                            <label for="form_soddisf_competenze_4">4</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_soddisf_competenze_5" name="form_soddisf_competenze" value="5">
+                            <label for="form_soddisf_competenze_5">5</label>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span class="rating-label-left">per niente</span>
+                        <span class="rating-label-right">del tutto</span>
+                    </div>
+                    <div class="error-message" id="form_soddisf_competenze-error">Seleziona un livello di soddisfazione</div>
+                </div>
+                
+                <!-- spendibilità -->
+                <div class="form-group">
+                    <label class="required">Quanto le competenze acquisite sono spendibili nel settore in cui lavora?</label>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <input type="radio" id="form_spendibilita_1" name="form_spendibilita" value="1" required>
+                            <label for="form_spendibilita_1">1</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_spendibilita_2" name="form_spendibilita" value="2">
+                            <label for="form_spendibilita_2">2</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_spendibilita_3" name="form_spendibilita" value="3">
+                            <label for="form_spendibilita_3">3</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_spendibilita_4" name="form_spendibilita" value="4">
+                            <label for="form_spendibilita_4">4</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_spendibilita_5" name="form_spendibilita" value="5">
+                            <label for="form_spendibilita_5">5</label>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span class="rating-label-left">per niente</span>
+                        <span class="rating-label-right">del tutto</span>
+                    </div>
+                    <div class="error-message" id="form_spendibilita-error">Seleziona un livello</div>
+                </div>
+                
+                <!-- efficacia -->
+                <div class="form-group">
+                    <label class="required">Quanto si sente efficace e competente nel suo lavoro di psicoterapeuta?</label>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <input type="radio" id="form_efficacia_1" name="form_efficacia" value="1" required>
+                            <label for="form_efficacia_1">1</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_efficacia_2" name="form_efficacia" value="2">
+                            <label for="form_efficacia_2">2</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_efficacia_3" name="form_efficacia" value="3">
+                            <label for="form_efficacia_3">3</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_efficacia_4" name="form_efficacia" value="4">
+                            <label for="form_efficacia_4">4</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="form_efficacia_5" name="form_efficacia" value="5">
+                            <label for="form_efficacia_5">5</label>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span class="rating-label-left">per niente</span>
+                        <span class="rating-label-right">del tutto</span>
+                    </div>
+                    <div class="error-message" id="form_efficacia-error">Seleziona un livello</div>
+                </div>
+                
+                <!-- pazienti -->
+                <div class="form-group">
+                    <label for="form_pazienti_numero" class="required">Durante gli anni di formazione in psicoterapia, quanti pazienti circa ha seguito, escludendo il tirocinio:</label>
+                    <input type="number" id="form_pazienti_numero" name="form_pazienti_numero" min="0" required>
+                    <div class="error-message" id="form_pazienti_numero-error">Inserisci il numero di pazienti</div>
+                </div>
+                
+                <!-- ore -->
+                <div class="form-group">
+                    <label for="form_ore_totali" class="required">Durante gli anni di formazione in psicoterapia, quante ore circa di attività di psicoterapia ha svolto, escludendo il tirocinio:</label>
+                    <input type="number" id="form_ore_totali" name="form_ore_totali" min="0" required>
+                    <div class="error-message" id="form_ore_totali-error">Inserisci il numero di ore</div>
+                </div>
+                
+                <!-- aspetti da cambiare -->
+                <div class="form-group">
+                    <label for="form_aspetti_migliorabili" class="required">Quali aspetti cambierebbe/modificherebbe della sua formazione in psicoterapia:</label>
+                    <textarea id="form_aspetti_migliorabili" name="form_aspetti_migliorabili" rows="3" required></textarea>
+                    <div class="error-message" id="form_aspetti_migliorabili-error">Inserisci gli aspetti da cambiare</div>
+                </div>
+                
+                <!-- punti forza -->
+                <div class="form-group">
+                    <label for="form_punti_forza" class="required">Punti di forza della sua formazione:</label>
+                    <textarea id="form_punti_forza" name="form_punti_forza" rows="3" required></textarea>
+                    <div class="error-message" id="form_punti_forza-error">Inserisci i punti di forza</div>
+                </div>
+            </div>
+
+            <!-- SEZIONE 5: Partecipazione alla Cultura Professionale -->
+            <div id="section5" class="section">
+                <div class="section-title">Partecipazione alla Cultura Professionale</div>
+                
+                <!-- iscrizione SITCC -->
+                <div class="form-group">
+                    <label class="required">È iscritto alla SITCC?</label>
+                    <div class="radio-group inline-radio">
+                        <label class="radio-option">
+                            <input type="radio" name="cultura_iscritto_sitcc" value="Si" required data-toggle="siSITCC" data-toggle-other="noSITCC"> Si
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="cultura_iscritto_sitcc" value="No" data-toggle="noSITCC" data-toggle-other="siSITCC"> No
+                        </label>
+                    </div>
+                    <div class="error-message" id="cultura_iscritto_sitcc-error">Seleziona un'opzione</div>
+                    
+                    <!-- condizionali SITCC=si -->
+                    <div class="conditional-field" id="siSITCC">
+                        <div class="form-group">
+                            <label class="required">Perché è iscritto alla SITCC?</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="cultura_sitcc_motivo_si" value="Mi piace fare parte di una comunità scientifica" class="at-least-one-required"> 
+                                    Mi piace fare parte di una comunità scientifica
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="cultura_sitcc_motivo_si" value="È un'occasione di arricchimento professionale" class="at-least-one-required"> 
+                                    È un'occasione di arricchimento professionale
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="cultura_sitcc_motivo_si" value="È un modo per stare in contatto con i colleghi" class="at-least-one-required"> 
+                                    È un modo per stare in contatto con i colleghi
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="cultura_sitcc_motivo_si" value="Mi dà modo di partecipare ai congressi" class="at-least-one-required"> 
+                                    Mi dà modo di partecipare ai congressi
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="cultura_sitcc_motivo_si" value="Apprezzo i vantaggi affiliativi (rivista, sconti sui corsi, ecc.)" class="at-least-one-required"> 
+                                    Apprezzo i vantaggi affiliativi (rivista, sconti sui corsi, ecc.)
+                                </label>
+                            </div>
+                            <div class="error-message" id="cultura_sitcc_motivo_si-error">Seleziona almeno un'opzione</div>
+                        </div>
+                    </div>
+                    
+                    <!-- condizionali SITCC=no -->
+                    <div class="conditional-field" id="noSITCC">
+                        <div class="form-group">
+                            <label for="cultura_sitcc_motivo_no">Perché no?</label>
+                            <textarea id="cultura_sitcc_motivo_no" name="cultura_sitcc_motivo_no" rows="3"></textarea>
+                            <div class="error-message" id="cultura_sitcc_motivo_no-error">Inserisci il motivo</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mantiene rapporti con la Scuola di formazione? -->
+                <div class="form-group">
+                    <label class="required">Mantiene rapporti con la Scuola di formazione?</label>
+                    <div class="radio-group inline-radio">
+                        <label class="radio-option">
+                            <input type="radio" name="cultura_rapporti_scuola" value="Si" required> Si
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="cultura_rapporti_scuola" value="No"> No
+                        </label>
+                    </div>
+                    <div class="error-message" id="cultura_rapporti_scuola-error">Seleziona un'opzione</div>
+                </div>
+                
+                <!-- Mantiene rapporti con i colleghi di formazione? -->
+                <div class="form-group">
+                    <label class="required">Mantiene rapporti con i colleghi di formazione?</label>
+                    <div class="radio-group inline-radio">
+                        <label class="radio-option">
+                            <input type="radio" name="cultura_rapporti_colleghi" value="Si" required> Si
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="cultura_rapporti_colleghi" value="No"> No
+                        </label>
+                    </div>
+                    <div class="error-message" id="cultura_rapporti_colleghi-error">Seleziona un'opzione</div>
+                </div>
+                
+                <!-- Segue corsi di aggiornamento proposti dalla Scuola? -->
+                <div class="form-group">
+                    <label class="required">Segue corsi di aggiornamento proposti dalla Scuola?</label>
+                    <div class="radio-group inline-radio">
+                        <label class="radio-option">
+                            <input type="radio" name="cultura_segue_corsi" value="Si" required> Si
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="cultura_segue_corsi" value="No"> No
+                        </label>
+                    </div>
+                    <div class="error-message" id="cultura_segue_corsi-error">Seleziona un'opzione</div>
+                </div>
+                
+                <!-- Quali corsi preferirebbe fossero offerti, che non sono stati proposti? -->
+                <div class="form-group">
+                    <label for="cultura_corsi_desiderati" class="required">Quali corsi preferirebbe fossero offerti, che non sono stati proposti?</label>
+                    <textarea id="cultura_corsi_desiderati" name="cultura_corsi_desiderati" rows="3" maxlength="255" required></textarea>
+                    <div class="error-message" id="cultura_corsi_desiderati-error">Inserisci i corsi che vorresti fossero proposti</div>
+                </div>
+                
+                <!-- Ha mai proposto progetti di collaborazione con la Scuola? -->
+                <div class="form-group">
+                    <label class="required">Ha mai proposto progetti di collaborazione con la Scuola?</label>
+                    <div class="radio-group inline-radio">
+                        <label class="radio-option">
+                            <input type="radio" name="cultura_proposto_progetti" value="Si" required data-toggle="noProgettiConditional" data-toggle-value="No"> Si
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="cultura_proposto_progetti" value="No" data-toggle="noProgettiConditional"> No
+                        </label>
+                    </div>
+                    <div class="error-message" id="cultura_proposto_progetti-error">Seleziona un'opzione</div>
+                    
+                    <!-- Se no, perché? -->
+                    <div class="conditional-field" id="noProgettiConditional">
+                        <div class="form-group">
+                            <label for="cultura_motivo_no_progetti" class="required">Se no, perché?</label>
+                            <textarea id="cultura_motivo_no_progetti" name="cultura_motivo_no_progetti" rows="3" maxlength="255"></textarea>
+                            <div class="error-message" id="cultura_motivo_no_progetti-error">Inserisci il motivo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pulsante invio -->
             <div class="form-group submit-group">
                 <button type="submit" id="submitBtn">Invia Questionario</button>
             </div>
 
+            <!-- Messaggio di ringraziamento -->
             <div class="thank-you-message" id="thankYouMessage" style="display: none;">
                 <p><em>La ringraziamo davvero</em></p>
                 <p><em>per il tempo che ci ha dedicato</em></p>
@@ -54,7 +955,6 @@
         </form>
     </div>
 
-    <script src="script.js"></script>
-    <script src="direct-submit.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
