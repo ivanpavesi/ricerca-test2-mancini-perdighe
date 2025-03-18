@@ -2,6 +2,7 @@
  * Questionario APC - Script principale ottimizzato e compatibile
  * Gestisce la validazione, campi condizionali e invio del form
  * Versione ottimizzata per massima compatibilità con browser datati
+ * VERSIONE CORRETTA 2025-03-18 - Problema campi condizionali risolto
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,6 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
   if (form) {
     form.addEventListener('submit', handleFormSubmit);
   }
+  
+  // Esecuzione manuale del controllo condizionale all'avvio
+  updateConditionalFields();
+  
+  // Log per debugging
+  console.log("Inizializzazione completata");
 });
 
 /**
@@ -45,6 +52,7 @@ function populateYears() {
 function setupConditionalFields() {
   // Nascondi tutti i campi condizionali all'inizio
   var conditionalFields = document.getElementsByClassName('conditional-field');
+  console.log("Campi condizionali trovati: " + conditionalFields.length);
   for (var i = 0; i < conditionalFields.length; i++) {
     conditionalFields[i].style.display = 'none';
   }
@@ -59,18 +67,19 @@ function setupConditionalFields() {
   for (var i = 0; i < checkboxes.length; i++) {
     checkboxes[i].addEventListener('change', updateConditionalFields);
   }
-  
-  // Esegui subito per impostare correttamente lo stato iniziale
-  updateConditionalFields();
 }
 
 /**
  * Aggiorna la visibilità di tutti i campi condizionali in base alle selezioni correnti
- * Versione ottimizzata per compatibilità con browser datati
+ * Versione corretta e ottimizzata per compatibilità con browser datati
  */
 function updateConditionalFields() {
+  console.log("Aggiornamento campi condizionali...");
+  
   // Gestione campi toggle semplici (data-toggle)
   var toggles = document.querySelectorAll('[data-toggle]');
+  console.log("Toggle semplici trovati: " + toggles.length);
+  
   for (var i = 0; i < toggles.length; i++) {
     var el = toggles[i];
     var targetId = el.getAttribute('data-toggle');
@@ -78,7 +87,28 @@ function updateConditionalFields() {
     var target = document.getElementById(targetId);
     
     if (target) {
-      var shouldShow = el.checked && el.value === toggleValue;
+      // CORREZIONE: Cambiato la logica per mostrare correttamente i campi
+      // Il campo deve essere mostrato se l'elemento è checked E (il valore è quello atteso OPPURE non c'è un valore atteso specificato)
+      var isRadioOrCheckbox = (el.type === 'radio' || el.type === 'checkbox');
+      
+      var shouldShow = false;
+      
+      // Per radio e checkbox, devono essere checked
+      if (isRadioOrCheckbox) {
+        // Se ha data-toggle-value, controlla il valore
+        if (el.hasAttribute('data-toggle-value')) {
+          shouldShow = el.checked && el.value === toggleValue;
+        } else {
+          // Senza data-toggle-value, mostra se è checked
+          shouldShow = el.checked;
+        }
+      } else {
+        // Per altri tipi di input, controlla solo il valore
+        shouldShow = el.value === toggleValue;
+      }
+      
+      console.log("Toggle: " + targetId + " - Visible: " + shouldShow + " - Value: " + el.value + " - Expected: " + toggleValue + " - Checked: " + el.checked);
+      
       target.style.display = shouldShow ? 'block' : 'none';
       updateRequiredAttributes(target, shouldShow);
     }
@@ -86,6 +116,8 @@ function updateConditionalFields() {
   
   // Gestione campi toggle multipli (data-toggle-multiple)
   var multiToggles = document.querySelectorAll('[data-toggle-multiple]');
+  console.log("Toggle multipli trovati: " + multiToggles.length);
+  
   for (var j = 0; j < multiToggles.length; j++) {
     var el = multiToggles[j];
     var toggleConfig = el.getAttribute('data-toggle-multiple');
@@ -95,12 +127,24 @@ function updateConditionalFields() {
       for (var k = 0; k < configs.length; k++) {
         var config = configs[k];
         var parts = config.split(':');
+        if (parts.length < 2) continue;
+        
         var targetId = parts[0];
         var toggleValue = parts[1];
         var target = document.getElementById(targetId);
         
         if (target) {
-          var shouldShow = el.checked && el.value === toggleValue;
+          // CORREZIONE: Aggiornata logica per radio e checkbox
+          var shouldShow = false;
+          
+          if (el.type === 'radio' || el.type === 'checkbox') {
+            shouldShow = el.checked && el.value === toggleValue;
+          } else {
+            shouldShow = el.value === toggleValue;
+          }
+          
+          console.log("MultiToggle: " + targetId + " - Visible: " + shouldShow);
+          
           target.style.display = shouldShow ? 'block' : 'none';
           updateRequiredAttributes(target, shouldShow);
         }
@@ -110,11 +154,18 @@ function updateConditionalFields() {
   
   // Gestione campi toggle con range (data-toggle-range)
   var rangeToggles = document.querySelectorAll('[data-toggle-range]');
+  console.log("Toggle range trovati: " + rangeToggles.length);
+  
   for (var l = 0; l < rangeToggles.length; l++) {
     var el = rangeToggles[l];
-    if (el.checked) {
+    // CORREZIONE: Verifica se è checked solo per radio e checkbox
+    var isCheckedOrNotRequired = (el.type !== 'radio' && el.type !== 'checkbox') || el.checked;
+    
+    if (isCheckedOrNotRequired) {
       var rangeConfig = el.getAttribute('data-toggle-range');
       var parts = rangeConfig.split(':');
+      if (parts.length < 3) continue;
+      
       var targetId = parts[0];
       var minValue = parseInt(parts[1]);
       var maxValue = parseInt(parts[2]);
@@ -122,7 +173,10 @@ function updateConditionalFields() {
       
       if (target) {
         var value = parseInt(el.value);
-        var shouldShow = value >= minValue && value <= maxValue;
+        var shouldShow = !isNaN(value) && value >= minValue && value <= maxValue;
+        
+        console.log("RangeToggle: " + targetId + " - Visible: " + shouldShow);
+        
         target.style.display = shouldShow ? 'block' : 'none';
         updateRequiredAttributes(target, shouldShow);
       }
@@ -600,3 +654,28 @@ function sendToGoogleSheets(data) {
   // Invia la richiesta
   xhr.send(params.toString());
 }
+
+/**
+ * Aggiungiamo questo codice per forzare l'aggiornamento dei campi condizionali
+ * quando viene caricata la pagina.
+ */
+window.addEventListener('load', function() {
+  // Forza l'aggiornamento dei campi condizionali dopo il caricamento completo
+  setTimeout(updateConditionalFields, 300);
+  
+  // Imposta debugging
+  console.log("Pagina caricata completamente, campi condizionali inizializzati");
+  
+  // Aggiunge un pulsante di debug se necessario (solo sviluppo)
+  if (window.location.href.includes('debug=true')) {
+    var debugBtn = document.createElement('button');
+    debugBtn.textContent = "Debug campi condizionali";
+    debugBtn.style.marginBottom = "20px";
+    debugBtn.style.backgroundColor = "#f0ad4e";
+    debugBtn.onclick = function() {
+      updateConditionalFields();
+      alert("Forzato aggiornamento campi condizionali");
+    };
+    document.querySelector('.container').prepend(debugBtn);
+  }
+});
