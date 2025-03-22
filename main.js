@@ -1,12 +1,10 @@
 /**
- * Questionario APC - Script principale ottimizzato e completamente corretto
+ * Questionario APC - Script principale ottimizzato e compatibile
  * Gestisce la validazione, campi condizionali e invio del form
- * Versione corretta 2025-03-18 - Problema campi condizionali risolto
+ * Versione ottimizzata per massima compatibilità con browser datati
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log("DOM caricato, inizializzazione componenti...");
-  
   // Inizializzazione componenti
   populateYears();
   setupConditionalFields();
@@ -17,13 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if (form) {
     form.addEventListener('submit', handleFormSubmit);
   }
-  
-  // Log per debug
-  console.log("Form trovato:", form ? "Sì" : "No");
-  
-  // Esegui subito per impostare correttamente lo stato iniziale
-  console.log("Prima chiamata a updateConditionalFields...");
-  updateConditionalFields();
 });
 
 /**
@@ -52,134 +43,42 @@ function populateYears() {
  * Configura tutti i campi condizionali con gestori eventi unificati
  */
 function setupConditionalFields() {
-  console.log("Configurazione campi condizionali...");
-  
   // Nascondi tutti i campi condizionali all'inizio
   var conditionalFields = document.getElementsByClassName('conditional-field');
-  console.log("Campi condizionali trovati:", conditionalFields.length);
-  
   for (var i = 0; i < conditionalFields.length; i++) {
     conditionalFields[i].style.display = 'none';
   }
   
   // Imposta i listener per tutti i controlli che influenzano i campi condizionali
   var radios = document.querySelectorAll('input[type="radio"]');
-  console.log("Radio buttons trovati:", radios.length);
-  
   for (var i = 0; i < radios.length; i++) {
-    radios[i].addEventListener('change', function() {
-      console.log("Radio changed:", this.name, "Value:", this.value, "Checked:", this.checked);
-      updateConditionalFields();
-    });
+    radios[i].addEventListener('change', updateConditionalFields);
   }
   
   var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  console.log("Checkbox trovati:", checkboxes.length);
-  
   for (var i = 0; i < checkboxes.length; i++) {
-    checkboxes[i].addEventListener('change', function() {
-      console.log("Checkbox changed:", this.name, "Value:", this.value, "Checked:", this.checked);
-      updateConditionalFields();
-    });
+    checkboxes[i].addEventListener('change', updateConditionalFields);
   }
+  
+  // Esegui subito per impostare correttamente lo stato iniziale
+  updateConditionalFields();
 }
 
 /**
  * Aggiorna la visibilità di tutti i campi condizionali in base alle selezioni correnti
- * Versione completamente corretta che risolve i problemi specifici segnalati
+ * Versione ottimizzata per compatibilità con browser datati
  */
 function updateConditionalFields() {
-  console.log("Aggiornamento campi condizionali...");
-  
-  // CORREZIONE: Debug specifico per i casi problematici
-  // Caso 1: Lavora?
-  var lavoraSi = document.querySelector('input[name="lavoro_stato_occupazionale"][value="Si"]');
-  var lavoraConditional = document.getElementById('lavoraConditional');
-  
-  if (lavoraSi && lavoraConditional) {
-    var shouldShowLavora = lavoraSi.checked;
-    console.log("Caso 1 - Lavora? Si è selezionato:", shouldShowLavora);
-    lavoraConditional.style.display = shouldShowLavora ? 'block' : 'none';
-    updateRequiredAttributes(lavoraConditional, shouldShowLavora);
-  }
-  
-  // Caso 2: Lavora come psicoterapeuta?
-  var psicoterapeutaSi = document.querySelector('input[name="lavoro_psicoterapeuta"][value="Si"]');
-  var psicoterapeutaNo = document.querySelector('input[name="lavoro_psicoterapeuta"][value="No"]');
-  var psicoterapeutaConditional = document.getElementById('psicoterapeutaConditional');
-  var nonPsicoterapeutaConditional = document.getElementById('nonPsicoterapeutaConditional');
-  
-  if (psicoterapeutaSi && psicoterapeutaConditional) {
-    var shouldShowPsicoterapeuta = psicoterapeutaSi.checked;
-    console.log("Caso 2 - Psicoterapeuta? Si è selezionato:", shouldShowPsicoterapeuta);
-    psicoterapeutaConditional.style.display = shouldShowPsicoterapeuta ? 'block' : 'none';
-    updateRequiredAttributes(psicoterapeutaConditional, shouldShowPsicoterapeuta);
-  }
-  
-  if (psicoterapeutaNo && nonPsicoterapeutaConditional) {
-    var shouldShowNonPsicoterapeuta = psicoterapeutaNo.checked;
-    console.log("Caso 2 - Psicoterapeuta? No è selezionato:", shouldShowNonPsicoterapeuta);
-    nonPsicoterapeutaConditional.style.display = shouldShowNonPsicoterapeuta ? 'block' : 'none';
-    updateRequiredAttributes(nonPsicoterapeutaConditional, shouldShowNonPsicoterapeuta);
-  }
-  
-  // Caso 3: Soddisfazione globale (1-3)
-  var soddisfazione1 = document.getElementById('soddisf_globale_1');
-  var soddisfazione2 = document.getElementById('soddisf_globale_2');
-  var soddisfazione3 = document.getElementById('soddisf_globale_3');
-  var nonSoddisfattoConditional = document.getElementById('nonSoddisfattoConditional');
-  
-  if (nonSoddisfattoConditional) {
-    var lowRatingSelected = (soddisfazione1 && soddisfazione1.checked) || 
-                           (soddisfazione2 && soddisfazione2.checked) || 
-                           (soddisfazione3 && soddisfazione3.checked);
-    
-    console.log("Caso 3 - Rating basso selezionato:", lowRatingSelected);
-    nonSoddisfattoConditional.style.display = lowRatingSelected ? 'block' : 'none';
-    updateRequiredAttributes(nonSoddisfattoConditional, lowRatingSelected);
-  }
-  
-  // Ora processiamo il resto dei campi condizionali normalmente
   // Gestione campi toggle semplici (data-toggle)
   var toggles = document.querySelectorAll('[data-toggle]');
-  console.log("Elementi con data-toggle trovati:", toggles.length);
-  
   for (var i = 0; i < toggles.length; i++) {
     var el = toggles[i];
     var targetId = el.getAttribute('data-toggle');
-    var toggleValue = el.getAttribute('data-toggle-value');
+    var toggleValue = el.getAttribute('data-toggle-value') || el.value;
     var target = document.getElementById(targetId);
     
-    // Saltiamo i casi già gestiti sopra
-    if (targetId === 'lavoraConditional' || 
-        targetId === 'psicoterapeutaConditional' || 
-        targetId === 'nonPsicoterapeutaConditional' ||
-        targetId === 'nonSoddisfattoConditional') {
-      continue;
-    }
-    
     if (target) {
-      var shouldShow = false;
-      
-      // Se è un radio o checkbox, deve essere checked
-      if (el.type === 'radio' || el.type === 'checkbox') {
-        if (toggleValue) {
-          // Se c'è un valore atteso, deve corrispondere
-          shouldShow = el.checked && el.value === toggleValue;
-        } else {
-          // Altrimenti basta che sia checked
-          shouldShow = el.checked;
-        }
-      } else {
-        // Per altri input, solo il valore conta
-        if (toggleValue) {
-          shouldShow = el.value === toggleValue;
-        } else {
-          shouldShow = Boolean(el.value);
-        }
-      }
-      
-      console.log("Toggle:", targetId, "- Visible:", shouldShow);
+      var shouldShow = el.checked && el.value === toggleValue;
       target.style.display = shouldShow ? 'block' : 'none';
       updateRequiredAttributes(target, shouldShow);
     }
@@ -187,39 +86,21 @@ function updateConditionalFields() {
   
   // Gestione campi toggle multipli (data-toggle-multiple)
   var multiToggles = document.querySelectorAll('[data-toggle-multiple]');
-  console.log("Elementi con data-toggle-multiple trovati:", multiToggles.length);
-  
   for (var j = 0; j < multiToggles.length; j++) {
     var el = multiToggles[j];
     var toggleConfig = el.getAttribute('data-toggle-multiple');
-    
-    // Saltiamo i casi già gestiti sopra
-    if (toggleConfig.includes('psicoterapeutaConditional') || 
-        toggleConfig.includes('nonPsicoterapeutaConditional')) {
-      continue;
-    }
     
     if (toggleConfig) {
       var configs = toggleConfig.split(',');
       for (var k = 0; k < configs.length; k++) {
         var config = configs[k];
         var parts = config.split(':');
-        if (parts.length < 2) continue;
-        
         var targetId = parts[0];
         var toggleValue = parts[1];
         var target = document.getElementById(targetId);
         
         if (target) {
-          var shouldShow = false;
-          
-          if (el.type === 'radio' || el.type === 'checkbox') {
-            shouldShow = el.checked && el.value === toggleValue;
-          } else {
-            shouldShow = el.value === toggleValue;
-          }
-          
-          console.log("MultiToggle:", targetId, "- Visible:", shouldShow);
+          var shouldShow = el.checked && el.value === toggleValue;
           target.style.display = shouldShow ? 'block' : 'none';
           updateRequiredAttributes(target, shouldShow);
         }
@@ -229,23 +110,11 @@ function updateConditionalFields() {
   
   // Gestione campi toggle con range (data-toggle-range)
   var rangeToggles = document.querySelectorAll('[data-toggle-range]');
-  console.log("Elementi con data-toggle-range trovati:", rangeToggles.length);
-  
-  // Saltiamo il caso della soddisfazione già gestito sopra
   for (var l = 0; l < rangeToggles.length; l++) {
     var el = rangeToggles[l];
-    var rangeConfig = el.getAttribute('data-toggle-range');
-    
-    // Salta i casi già gestiti
-    if (rangeConfig.includes('nonSoddisfattoConditional')) {
-      continue;
-    }
-    
-    // Solo se è checked (per radio e checkbox)
-    if ((el.type !== 'radio' && el.type !== 'checkbox') || el.checked) {
+    if (el.checked) {
+      var rangeConfig = el.getAttribute('data-toggle-range');
       var parts = rangeConfig.split(':');
-      if (parts.length < 3) continue;
-      
       var targetId = parts[0];
       var minValue = parseInt(parts[1]);
       var maxValue = parseInt(parts[2]);
@@ -253,9 +122,7 @@ function updateConditionalFields() {
       
       if (target) {
         var value = parseInt(el.value);
-        var shouldShow = !isNaN(value) && value >= minValue && value <= maxValue;
-        
-        console.log("RangeToggle:", targetId, "- Value:", value, "- Range:", minValue, "-", maxValue, "- Visible:", shouldShow);
+        var shouldShow = value >= minValue && value <= maxValue;
         target.style.display = shouldShow ? 'block' : 'none';
         updateRequiredAttributes(target, shouldShow);
       }
@@ -265,6 +132,7 @@ function updateConditionalFields() {
 
 /**
  * Aggiorna gli attributi required dei campi in base alla visibilità del container
+ * Versione compatibile con browser datati
  */
 function updateRequiredAttributes(container, isVisible) {
   if (!container) return;
@@ -732,17 +600,3 @@ function sendToGoogleSheets(data) {
   // Invia la richiesta
   xhr.send(params.toString());
 }
-
-/**
- * Forza un aggiornamento dei campi condizionali dopo il caricamento completo della pagina
- */
-window.addEventListener('load', function() {
-  console.log("Pagina completamente caricata");
-  
-  // Esegue updateConditionalFields con un leggero ritardo
-  // per assicurarsi che il DOM sia completamente pronto
-  setTimeout(function() {
-    console.log("Aggiornamento forzato dei campi condizionali dopo il caricamento...");
-    updateConditionalFields();
-  }, 300);
-});
