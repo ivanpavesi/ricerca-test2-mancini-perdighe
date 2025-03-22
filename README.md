@@ -1,1 +1,0 @@
-# ricerca-apc-mancini-perdighe
